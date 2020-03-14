@@ -120,8 +120,39 @@ const frontEndCategories = [
   },
 ]
 
-const backendCategories = []
-const otherCategories = []
+const backendCategories = [
+  {
+    name: 'Servers',
+    content: 'Node, Express',
+  },
+  {
+    name: 'Databases',
+    content: 'MongoDB, Mongoose, Postgres, SQL, Prisma',
+  },
+  {
+    name: 'Authentication',
+    content: 'Cookies, JWT, OAuth2',
+  },
+  {
+    name: 'APIs',
+    content: 'Rest, GraphQL',
+  },
+]
+const otherCategories = [
+  {
+    name: 'Testing',
+    content: 'Jest, Enzyme, Percy (Visual Regression)',
+  },
+  {
+    name: 'Deployment',
+    content:
+      'AWS (S3, Elastic Beanstalk, Route53, CloudFront), Heroku, Netlify',
+  },
+  {
+    name: 'CI/CD',
+    content: 'CircleCi',
+  },
+]
 
 class HomeIndex extends React.Component {
   render() {
