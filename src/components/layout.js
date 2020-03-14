@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import '../assets/scss/main.scss'
 
 import Header from './Header'
@@ -17,3 +19,7 @@ class Template extends React.Component {
 }
 
 export default Template
+
+Template.propTypes = {
+  children: PropTypes.array,
+}

@@ -72,44 +72,52 @@ const DEFAULT_IMAGES = [
 ]
 
 const IntroImageWrapper = styled.div`
-  display: flex;
+  margin: 0 auto;
+  display: grid;
+  max-width: 1000px;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   margin-bottom: 100px;
-  img:last-child {
+  img:first-child {
+    position: relative;
+    left: 50px;
+  }
+  img:nth-child(2) {
     position: relative;
     top: 50px;
-    right: 50px;
+
+    z-index: 1;
   }
-  @media (max-width: 736px) {
-    width: 100%;
-    align-items: center;
-    flex-direction: column;
-    img:last-child {
-      top: -40px;
-      left: 20px;
-    }
+  img:nth-child(3) {
+    position: relative;
+    right: 50px;
   }
 `
 
 const StyledImage = styled.img`
-  width: 400px;
+  width: 100%;
+  border-radius: 5px;
   box-shadow: 9px 10px 59px -19px rgba(0, 0, 0, 0.61);
-  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.8s;
   &:hover {
     transform: scale(1.03);
-  }
-  @media (max-width: 1280px) {
-    width: 300px;
-  }
-  @media (max-width: 376px) {
-    width: 250px;
   }
 `
 
 const SkillsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-gap: 40px;
 `
+
+const frontEndCategories = [
+  {
+    name: 'Fundamentals',
+    content: 'HTML, CSS, Javascript',
+  },
+]
+
+const backendCategories = []
+const otherCategories = []
 
 class HomeIndex extends React.Component {
   render() {
@@ -141,6 +149,10 @@ class HomeIndex extends React.Component {
                 src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202941/portfolio/myinternship/myinternship-thumbnail_nvtgiz.png"
                 alt="dashboard"
               />
+              <StyledImage
+                src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202924/portfolio/lingualink/lingualink-student-detail_mzbai1.png"
+                alt="dashboard"
+              />
             </IntroImageWrapper>
           </section>
 
@@ -148,9 +160,21 @@ class HomeIndex extends React.Component {
             <header>
               <h2>Skills</h2>
               <SkillsGrid>
-                <SkillCard title="Front End" icon={faDesktop} />
-                <SkillCard title="Back End" icon={faDatabase} />
-                <SkillCard title="Other" icon={faPlusCircle} />
+                <SkillCard
+                  title="Front End"
+                  icon={faDesktop}
+                  categories={frontEndCategories}
+                />
+                <SkillCard
+                  title="Back End"
+                  icon={faDatabase}
+                  categories={backendCategories}
+                />
+                <SkillCard
+                  title="Other"
+                  icon={faPlusCircle}
+                  categories={otherCategories}
+                />
               </SkillsGrid>
             </header>
           </section>

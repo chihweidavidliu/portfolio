@@ -1023,7 +1023,7 @@ input[type='button'],
 
 #main {
   margin-left: $size-header-width;
-  max-width: 50em + $size-header-pad;
+  max-width: 70em + $size-header-pad;
   padding: ($size-header-pad * 2) $size-header-pad $size-header-pad $size-header-pad;
   width: calc(100% - #{$size-header-width});
 
@@ -1031,6 +1031,8 @@ input[type='button'],
     border-top: solid 2px _palette(border);
     margin: $size-header-pad 0 0 0;
     padding: $size-header-pad 0 0 0;
+
+    text-align: center;
 
     &:first-child {
       border-top: 0;
