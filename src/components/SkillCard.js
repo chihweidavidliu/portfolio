@@ -10,7 +10,7 @@ const SkillCardWrapper = styled.div`
   &:hover {
     transform: scale(1.03);
   }
-  padding: 20px;
+  padding: 25px;
   box-shadow: 9px 10px 59px -19px rgba(0, 0, 0, 0.21);
 `
 
@@ -53,7 +53,11 @@ const SkillCard = ({ title, icon, categories }) => (
     </Header>
     <div>
       {categories.map(category => (
-        <CategoryList category={category.name} list={category.content} />
+        <CategoryList
+          key={category.name}
+          category={category.name}
+          list={category.content}
+        />
       ))}
     </div>
   </SkillCardWrapper>

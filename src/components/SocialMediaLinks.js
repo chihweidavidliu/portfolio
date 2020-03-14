@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Footer extends React.Component {
+class SocialMediaLinks extends React.Component {
   render() {
     return (
       <div id="footer">
@@ -29,4 +29,4 @@ class Footer extends React.Component {
   }
 }
 
-export default Footer
+export default SocialMediaLinks

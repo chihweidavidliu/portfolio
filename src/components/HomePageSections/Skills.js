@@ -1,17 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
 import {
   faDesktop,
   faDatabase,
   faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons'
 import SkillCard from '../SkillCard'
-
-const SkillsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 40px;
-`
+import CardGrid from '../CardGrid'
 
 const frontEndCategories = [
   {
@@ -20,7 +14,7 @@ const frontEndCategories = [
   },
   {
     name: 'Libraries/Frameworks',
-    content: 'JQuery, React, Redux, Nextjs, Apollo Client, GatsbyJS',
+    content: 'React, Redux, Nextjs, Apollo Client, GatsbyJS',
   },
 ]
 
@@ -62,7 +56,7 @@ const Skills = () => (
   <section>
     <header>
       <h2>Skills</h2>
-      <SkillsGrid>
+      <CardGrid>
         <SkillCard
           title="Front End"
           icon={faDesktop}
@@ -78,7 +72,7 @@ const Skills = () => (
           icon={faPlusCircle}
           categories={otherCategories}
         />
-      </SkillsGrid>
+      </CardGrid>
     </header>
   </section>
 )
