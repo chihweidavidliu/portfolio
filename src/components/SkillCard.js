@@ -15,10 +15,9 @@ const SkillCardWrapper = styled.div`
 `
 
 const Header = styled.div`
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  > * {
-    align-self: center;
+  margin-bottom: 10px;
+  strong {
+    margin-left: 10px;
   }
 `
 
@@ -26,13 +25,18 @@ const CategoryWrapper = styled.div`
   font-size: 16px;
   display: grid;
   grid-template-columns: max-content 1fr;
-  grid-gap: 10px;
+  grid-gap: 15px;
+`
+
+const List = styled.span`
+  text-align: right;
+  justify-self: right;
 `
 
 const CategoryList = ({ category, list }) => (
   <CategoryWrapper>
     <strong>{category}:</strong>
-    <span>{list}</span>
+    <List>{list}</List>
   </CategoryWrapper>
 )
 
