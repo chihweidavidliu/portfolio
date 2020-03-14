@@ -80,12 +80,13 @@ a {
     'transition',
     ('color #{_duration(transition)} ease-in-out', 'border-color #{_duration(transition)} ease-in-out')
   );
-  border-bottom: dotted 1px;
+  border-bottom: dotted 1px transparent;
   color: _palette(accent1, bg);
   text-decoration: none;
 
   &:hover {
     border-bottom-color: transparent;
+    border-bottom: dotted 1px;
     color: _palette(accent1, bg) !important;
     text-decoration: none;
   }
@@ -1023,7 +1024,7 @@ input[type='button'],
 
 #main {
   margin-left: $size-header-width;
-  max-width: 70em + $size-header-pad;
+  max-width: 80em + $size-header-pad;
   padding: ($size-header-pad * 2) $size-header-pad $size-header-pad $size-header-pad;
   width: calc(100% - #{$size-header-width});
 

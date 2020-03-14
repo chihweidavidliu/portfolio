@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import InformationRow from './InfromationRow'
 
 const SkillCardWrapper = styled.div`
   border-radius: 10px;
@@ -21,30 +22,6 @@ const Header = styled.div`
   }
 `
 
-const CategoryWrapper = styled.div`
-  font-size: 16px;
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  grid-gap: 15px;
-`
-
-const List = styled.span`
-  text-align: right;
-  justify-self: right;
-`
-
-const CategoryList = ({ category, list }) => (
-  <CategoryWrapper>
-    <strong>{category}:</strong>
-    <List>{list}</List>
-  </CategoryWrapper>
-)
-
-CategoryList.propTypes = {
-  category: PropTypes.string.isRequired,
-  list: PropTypes.string.isRequired,
-}
-
 const SkillCard = ({ title, icon, categories }) => (
   <SkillCardWrapper>
     <Header>
@@ -53,10 +30,10 @@ const SkillCard = ({ title, icon, categories }) => (
     </Header>
     <div>
       {categories.map(category => (
-        <CategoryList
+        <InformationRow
           key={category.name}
-          category={category.name}
-          list={category.content}
+          title={category.name}
+          value={category.content}
         />
       ))}
     </div>
