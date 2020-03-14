@@ -1,5 +1,11 @@
 import React from 'react'
+import styled from 'styled-components'
 import Helmet from 'react-helmet'
+import {
+  faDesktop,
+  faDatabase,
+  faPlusCircle,
+} from '@fortawesome/free-solid-svg-icons'
 
 import Layout from '../components/layout'
 // import Lightbox from 'react-images'
@@ -18,6 +24,7 @@ import full03 from '../assets/images/fulls/03.jpg'
 import full04 from '../assets/images/fulls/04.jpg'
 import full05 from '../assets/images/fulls/05.jpg'
 import full06 from '../assets/images/fulls/06.jpg'
+import SkillCard from '../components/SkillCard'
 
 const DEFAULT_IMAGES = [
   {
@@ -64,6 +71,46 @@ const DEFAULT_IMAGES = [
   },
 ]
 
+const IntroImageWrapper = styled.div`
+  display: flex;
+  margin-bottom: 100px;
+  img:last-child {
+    position: relative;
+    top: 50px;
+    right: 50px;
+  }
+  @media (max-width: 736px) {
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    img:last-child {
+      top: -40px;
+      left: 20px;
+    }
+  }
+`
+
+const StyledImage = styled.img`
+  width: 400px;
+  box-shadow: 9px 10px 59px -19px rgba(0, 0, 0, 0.61);
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+  &:hover {
+    transform: scale(1.03);
+  }
+  @media (max-width: 1280px) {
+    width: 300px;
+  }
+  @media (max-width: 376px) {
+    width: 250px;
+  }
+`
+
+const SkillsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 40px;
+`
+
 class HomeIndex extends React.Component {
   render() {
     const siteTitle = 'David Liu Web Development'
@@ -79,27 +126,33 @@ class HomeIndex extends React.Component {
         <div id="main">
           <section id="one">
             <header className="major">
-              <h2>
-                Ipsum lorem dolor aliquam ante commodo
-                <br />
-                magna sed accumsan arcu neque.
-              </h2>
+              <h2>Welcome</h2>
             </header>
             <p>
-              Accumsan orci faucibus id eu lorem semper. Eu ac iaculis ac nunc
-              nisi lorem vulputate lorem neque cubilia ac in adipiscing in curae
-              lobortis tortor primis integer massa adipiscing id nisi accumsan
-              pellentesque commodo blandit enim arcu non at amet id arcu magna.
-              Accumsan orci faucibus id eu lorem semper nunc nisi lorem
-              vulputate lorem neque cubilia.
+              I’m a self-taught full-stack web developer who creates beautiful,
+              powerful web apps.
             </p>
-            <ul className="actions">
-              <li>
-                <a href="#" className="button">
-                  Learn More
-                </a>
-              </li>
-            </ul>
+            <IntroImageWrapper>
+              <StyledImage
+                src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202957/portfolio/taskmaster/taskmaster-thumbnail_vamjxs.png"
+                alt="dashboard"
+              />
+              <StyledImage
+                src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202941/portfolio/myinternship/myinternship-thumbnail_nvtgiz.png"
+                alt="dashboard"
+              />
+            </IntroImageWrapper>
+          </section>
+
+          <section>
+            <header>
+              <h2>Skills</h2>
+              <SkillsGrid>
+                <SkillCard title="Front End" icon={faDesktop} />
+                <SkillCard title="Back End" icon={faDatabase} />
+                <SkillCard title="Other" icon={faPlusCircle} />
+              </SkillsGrid>
+            </header>
           </section>
 
           <section id="two">
