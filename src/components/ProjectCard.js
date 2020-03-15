@@ -35,16 +35,16 @@ const DetailBorder = styled.div`
   @media (max-width: 600px) {
     width: 100%;
   }
-  padding: 20px;
 `
 
 const Spacer = styled.div`
+  margin: 30px;
   width: 1px;
-  height: 90px;
+  height: 150px;
   background-color: lightgrey;
   align-self: center;
   @media (max-width: 600px) {
-    width: 90px;
+    width: 150px;
     height: 1px;
     justify-content: center;
   }
@@ -62,11 +62,12 @@ const StyledImage = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
+  object-position: 0 50;
 `
 
 const P = styled.p`
   margin: 0;
-  font-size: 18px;
+  font-size: 17px;
 `
 
 const LinksWrapper = styled.div`

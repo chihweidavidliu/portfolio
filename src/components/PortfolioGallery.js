@@ -40,7 +40,13 @@ const PortfolioGallery = ({ projects }) => {
           <Modal onClose={toggleLightbox}>
             <Carousel
               views={selectedProject.images}
-              styles={{ footer: base => ({ ...base, height: '10vh' }) }}
+              styles={{
+                footer: base => ({
+                  ...base,
+                  height: '10vh',
+                  fontSize: '20px',
+                }),
+              }}
             />
           </Modal>
         )}
