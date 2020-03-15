@@ -43,7 +43,6 @@ const PortfolioGallery = ({ projects }) => {
               styles={{
                 footer: base => ({
                   ...base,
-                  height: '10vh',
                   fontSize: '20px',
                 }),
               }}
