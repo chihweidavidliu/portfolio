@@ -42,6 +42,7 @@ const Introduction = () => (
       I’m a self-taught full-stack web developer who creates beautiful, powerful
       web apps.
     </p>
+
     <IntroImageWrapper>
       <StyledImage
         src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202957/portfolio/taskmaster/taskmaster-thumbnail_vamjxs.png"

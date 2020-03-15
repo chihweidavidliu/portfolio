@@ -3,7 +3,12 @@ import Proptypes from 'prop-types'
 import styled from 'styled-components'
 import InformationRow from './InfromationRow'
 
-const Wrapper = styled.section``
+const Wrapper = styled.section`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
 const ProjectDetails = styled.div`
   display: flex;
   min-width: 200px;
@@ -19,6 +24,10 @@ const Card = styled.div`
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   padding: 30px;
   border-radius: 10px;
+  flex-grow: 1;
+  @media (max-width: 1280px) {
+    flex-grow: 0;
+  }
 `
 
 const DetailBorder = styled.div`
@@ -76,7 +85,10 @@ const ProjectCard = ({ project, toggleLightbox }) => {
 
   return (
     <Wrapper>
-      <h3>{project.title}</h3>
+      <div>
+        <h3>{project.title}</h3>
+      </div>
+
       <Card>
         <ImageLinkWrapper
           className="image fit thumb"

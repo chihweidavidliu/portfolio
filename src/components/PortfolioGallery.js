@@ -7,6 +7,10 @@ import ProjectCard from './ProjectCard'
 
 const StyledCardGrid = styled(CardGrid)`
   grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  grid-auto-rows: 1fr;
+  @media (min-width: 1440px) {
+    grid-template-columns: repeat(2, minmax(600px, 1fr));
+  }
   @media (max-width: 736px) {
     grid-template-columns: 1fr;
   }
