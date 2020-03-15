@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import SocialMediaLinks from '../SocialMediaLinks'
 
 const IntroImageWrapper = styled.div`
   margin: 0 auto;
@@ -33,6 +34,10 @@ const StyledImage = styled.img`
   }
 `
 
+const LinksWrapper = styled.div`
+  margin-bottom: 40px;
+`
+
 const Introduction = () => (
   <section id="one">
     <header className="major">
@@ -42,6 +47,9 @@ const Introduction = () => (
       I’m a self-taught full-stack web developer who creates beautiful, powerful
       web apps.
     </p>
+    <LinksWrapper>
+      <SocialMediaLinks iconColor="#a2a2a2" />
+    </LinksWrapper>
 
     <IntroImageWrapper>
       <StyledImage
