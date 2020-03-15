@@ -24,10 +24,12 @@ const Card = styled.div`
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   padding: 30px;
   border-radius: 10px;
-  flex-grow: 1;
+  height: 100%;
   @media (max-width: 1280px) {
     flex-grow: 0;
   }
+  display: grid;
+  grid-template-rows: min-content 1fr 50px;
 `
 
 const DetailBorder = styled.div`
@@ -73,6 +75,8 @@ const P = styled.p`
 const LinksWrapper = styled.div`
   margin-top: 20px;
   display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
 `
 
 const Link = styled.a`
@@ -122,16 +126,16 @@ const ProjectCard = ({ project, toggleLightbox }) => {
                 value={project.techStack.backEnd}
               />
             )}
-            <LinksWrapper>
-              {project.githubLinks.map(link => (
-                <Link href={link.url}>{link.label}</Link>
-              ))}
-              {project.liveSiteLink && (
-                <Link href={project.liveSiteLink}>Live Site</Link>
-              )}
-            </LinksWrapper>
           </DetailBorder>
         </ProjectDetails>
+        <LinksWrapper>
+          {project.githubLinks.map(link => (
+            <Link href={link.url}>{link.label}</Link>
+          ))}
+          {project.liveSiteLink && (
+            <Link href={project.liveSiteLink}>Live Site</Link>
+          )}
+        </LinksWrapper>
       </Card>
     </Wrapper>
   )
