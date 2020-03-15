@@ -6,11 +6,9 @@ import CardGrid from './CardGrid'
 import ProjectCard from './ProjectCard'
 
 const StyledCardGrid = styled(CardGrid)`
-  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
-  grid-auto-rows: 1fr;
-  @media (min-width: 1440px) {
-    grid-template-columns: repeat(2, minmax(600px, 1fr));
-  }
+  grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+  grid-auto-rows: min-content;
+
   @media (max-width: 736px) {
     grid-template-columns: 1fr;
   }
@@ -40,7 +38,10 @@ const PortfolioGallery = ({ projects }) => {
       <ModalGateway>
         {isLightboxOpen && selectedProject && (
           <Modal onClose={toggleLightbox}>
-            <Carousel views={selectedProject.images} />
+            <Carousel
+              views={selectedProject.images}
+              styles={{ footer: base => ({ ...base, height: '10vh' }) }}
+            />
           </Modal>
         )}
       </ModalGateway>

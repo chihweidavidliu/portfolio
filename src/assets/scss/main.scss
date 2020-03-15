@@ -46,8 +46,8 @@
   )
 );
 
-$size-header-width: 25%;
-$size-header-pad: 4em;
+$size-header-width: 20%;
+$size-header-pad: 3em;
 
 /* Basic */
 
@@ -1024,8 +1024,8 @@ input[type='button'],
 
 #main {
   margin-left: $size-header-width;
-  max-width: 100em + $size-header-pad;
-  padding: ($size-header-pad * 2) $size-header-pad $size-header-pad $size-header-pad;
+  max-width: 100em - $size-header-pad;
+  padding: $size-header-pad;
   width: calc(100% - #{$size-header-width});
 
   > section {

@@ -35,7 +35,7 @@ const DetailBorder = styled.div`
   @media (max-width: 600px) {
     width: 100%;
   }
-  padding: 30px;
+  padding: 20px;
 `
 
 const Spacer = styled.div`
@@ -55,7 +55,7 @@ const Header = styled.div`
 `
 
 const ImageLinkWrapper = styled.a`
-  height: 400px;
+  height: 300px;
 `
 
 const StyledImage = styled.img`
