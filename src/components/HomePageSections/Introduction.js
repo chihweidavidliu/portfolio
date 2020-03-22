@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import SocialMediaLinks from '../SocialMediaLinks'
+import SectionHeader from '../typography/SectionHeader'
 
 const IntroImageWrapper = styled.div`
   margin: 0 auto;
   display: grid;
-  max-width: 1000px;
+  max-width: 800px;
   grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   margin-bottom: 100px;
   img:first-child {
@@ -41,15 +42,13 @@ const LinksWrapper = styled.div`
 const Introduction = () => (
   <section id="one">
     <header className="major">
-      <h2>Welcome</h2>
+      <SectionHeader>Welcome</SectionHeader>
     </header>
+
     <p>
       I’m a self-taught full-stack web developer who creates beautiful, powerful
       web apps.
     </p>
-    <LinksWrapper>
-      <SocialMediaLinks iconColor="#a2a2a2" />
-    </LinksWrapper>
 
     <IntroImageWrapper>
       <StyledImage
@@ -65,6 +64,10 @@ const Introduction = () => (
         alt="dashboard"
       />
     </IntroImageWrapper>
+
+    <LinksWrapper>
+      <SocialMediaLinks iconColor="#a2a2a2" fontSize="30px" />
+    </LinksWrapper>
   </section>
 )
 

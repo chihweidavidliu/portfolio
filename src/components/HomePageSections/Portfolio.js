@@ -5,6 +5,7 @@ import { lingualinkProject } from '../../projects/lingualink'
 import { taskMasterProject } from '../../projects/taskMaster'
 import { myInternshipProject } from '../../projects/myInternship'
 import { speakifyProject } from '../../projects/speakify'
+import SectionHeader from '../typography/SectionHeader'
 
 const PROJECTS = [
   lingualinkProject,
@@ -15,7 +16,7 @@ const PROJECTS = [
 
 const Portfolio = () => (
   <section id="two">
-    <h2>Portfolio</h2>
+    <SectionHeader>Portfolio</SectionHeader>
     <PortfolioGallery projects={PROJECTS} />
   </section>
 )

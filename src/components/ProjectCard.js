@@ -21,6 +21,7 @@ const ProjectDetails = styled.div`
 `
 
 const Card = styled.div`
+  background-color: white;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
   padding: 30px;
   border-radius: 10px;
@@ -54,6 +55,8 @@ const Spacer = styled.div`
 
 const Header = styled.div`
   margin-bottom: 10px;
+  color: #3a8e75;
+  font-weight: 800;
 `
 
 const ImageLinkWrapper = styled.a`

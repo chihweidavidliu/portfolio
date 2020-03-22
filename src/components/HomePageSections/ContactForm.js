@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import SectionHeader from '../typography/SectionHeader'
 
 const ContactFormWrapper = styled.section`
   display: flex;
@@ -29,7 +30,7 @@ const TopRow = styled.div`
 const ContactForm = () => (
   <ContactFormWrapper id="three">
     <InnerWrapper>
-      <h2>Contact</h2>
+      <SectionHeader>Contact</SectionHeader>
       <p>Interested in my work? Get in touch here!</p>
 
       <StyledForm method="post" action="#">

@@ -5,11 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import InformationRow from './InfromationRow'
 
 const SkillCardWrapper = styled.div`
+  background-color: white;
   border-radius: 10px;
   border: 1px solid lightgray;
   transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.8s;
   &:hover {
     transform: scale(1.03);
+    border: 1px solid ${props => props.theme.accent1.bg};
   }
   padding: 25px;
   box-shadow: 9px 10px 59px -19px rgba(0, 0, 0, 0.21);
@@ -17,8 +19,11 @@ const SkillCardWrapper = styled.div`
 
 const Header = styled.div`
   margin-bottom: 10px;
+  color: #3a8e75;
   strong {
+    color: #3a8e75;
     margin-left: 10px;
+    font-weight: 800;
   }
 `
 

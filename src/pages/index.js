@@ -20,7 +20,7 @@ const theme = {
   border2: '#dfdfdf',
   border2Bg: '	#e7e7e7',
   accent1: {
-    bg: '#49bf9d',
+    bg: '#3a8e75',
     fgBold: '#ffffff',
     border: 'rgba(255, 255, 255, 0.25)',
     borderBg: 'rgba(255, 255, 255, 0.075)',

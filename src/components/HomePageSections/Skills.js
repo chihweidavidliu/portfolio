@@ -6,6 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import SkillCard from '../SkillCard'
 import CardGrid from '../CardGrid'
+import SectionHeader from '../typography/SectionHeader'
 
 const frontEndCategories = [
   {
@@ -55,7 +56,7 @@ const otherCategories = [
 const Skills = () => (
   <section>
     <header>
-      <h2>Skills</h2>
+      <SectionHeader>Skills</SectionHeader>
       <CardGrid>
         <SkillCard
           title="Front End"
