@@ -96,11 +96,14 @@ const ChevronLink = styled.a`
     }
   }
   & {
-    margin: 20px;
+    margin: 40px;
     animation: MoveUpDown 1s linear infinite;
     position: relative;
     left: 0;
     bottom: 0;
+    &:hover {
+      border-bottom: dotted 1px transparent;
+    }
   }
 `
 
@@ -139,7 +142,7 @@ const Introduction = () => (
       <SocialMediaLinks iconColor="#a2a2a2" fontSize="20px" />
     </LinksWrapper>
 
-    <ChevronLink href="#skills">
+    <ChevronLink href="#about">
       <FontAwesomeIcon icon={faChevronDown} size="2x" />
     </ChevronLink>
   </IntroductionSectionWrapper>

@@ -6,6 +6,7 @@ import ContactForm from '../components/HomePageSections/ContactForm'
 import Portfolio from '../components/HomePageSections/Portfolio'
 import Skills from '../components/HomePageSections/Skills'
 import Introduction from '../components/HomePageSections/Introduction'
+import About from '../components/HomePageSections/About'
 
 const theme = {
   bg: '#fff',
@@ -76,6 +77,8 @@ class HomeIndex extends React.Component {
 
         <AppWrapper>
           <Introduction />
+          <About />
+          <Divider />
           <Skills />
           <Divider />
           <Portfolio />

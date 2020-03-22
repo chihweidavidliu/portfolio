@@ -20,6 +20,7 @@ const SkillCardWrapper = styled.div`
 const Header = styled.div`
   margin-bottom: 10px;
   color: #3a8e75;
+  text-align: center;
   strong {
     color: #3a8e75;
     margin-left: 10px;
