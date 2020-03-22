@@ -25,6 +25,7 @@ const Avatar = styled.div`
   height: 200px;
   width: 200px;
   justify-self: center;
+  align-self: center;
   img {
     border-radius: 50%;
     width: 100%;
