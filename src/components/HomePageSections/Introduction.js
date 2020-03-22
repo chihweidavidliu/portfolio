@@ -75,9 +75,9 @@ const StyledImage = styled.img`
 
 const StyledLink = styled.a`
   cursor: default;
-
+  text-decoration: none;
   &:hover {
-    text-decoration: none;
+    border-bottom: dotted 1px transparent;
   }
 `
 
@@ -113,7 +113,7 @@ const Introduction = () => (
     <P>a full-stack web developer based in London</P>
 
     <IntroImageWrapper>
-      <StyledLink href="#MyInternship">
+      <StyledLink href="#TaskMaster">
         <StyledImage
           src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202957/portfolio/taskmaster/taskmaster-thumbnail_vamjxs.png"
           alt="dashboard"
