@@ -7,6 +7,7 @@ import {
 import SkillCard from '../SkillCard'
 import CardGrid from '../CardGrid'
 import SectionHeader from '../typography/SectionHeader'
+import Section from '../Section'
 
 const frontEndCategories = [
   {
@@ -54,28 +55,26 @@ const otherCategories = [
 ]
 
 const Skills = () => (
-  <section>
-    <header>
-      <SectionHeader>Skills</SectionHeader>
-      <CardGrid>
-        <SkillCard
-          title="Front End"
-          icon={faDesktop}
-          categories={frontEndCategories}
-        />
-        <SkillCard
-          title="Back End"
-          icon={faDatabase}
-          categories={backendCategories}
-        />
-        <SkillCard
-          title="Other"
-          icon={faPlusCircle}
-          categories={otherCategories}
-        />
-      </CardGrid>
-    </header>
-  </section>
+  <Section id="skills">
+    <SectionHeader>Skills</SectionHeader>
+    <CardGrid>
+      <SkillCard
+        title="Front End"
+        icon={faDesktop}
+        categories={frontEndCategories}
+      />
+      <SkillCard
+        title="Back End"
+        icon={faDatabase}
+        categories={backendCategories}
+      />
+      <SkillCard
+        title="Other"
+        icon={faPlusCircle}
+        categories={otherCategories}
+      />
+    </CardGrid>
+  </Section>
 )
 
 export default Skills

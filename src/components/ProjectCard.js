@@ -3,11 +3,12 @@ import Proptypes from 'prop-types'
 import styled from 'styled-components'
 import InformationRow from './InfromationRow'
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
   width: 100%;
+  text-align: center;
 `
 const ProjectDetails = styled.div`
   display: flex;
@@ -92,7 +93,7 @@ const ProjectCard = ({ project, toggleLightbox }) => {
   const mainImage = project.images[0]
 
   return (
-    <Wrapper>
+    <Wrapper id={project.title}>
       <div>
         <h3>{project.title}</h3>
       </div>

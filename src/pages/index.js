@@ -1,9 +1,6 @@
 import React from 'react'
+import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
-import { ThemeProvider } from 'styled-components'
-
-import Layout from '../components/layout'
-// import Lightbox from 'react-images'
 
 import ContactForm from '../components/HomePageSections/ContactForm'
 import Portfolio from '../components/HomePageSections/Portfolio'
@@ -39,6 +36,32 @@ const theme = {
   },
 }
 
+const AppWrapper = styled.div`
+  width: 100vw;
+  display: grid;
+  justify-items: center;
+
+  section {
+    /* border-top: solid 2px lightgray; */
+    width: 100%;
+    max-width: 1200px;
+    padding: 30px;
+    text-align: center;
+
+    &:first-child {
+      border-top: 0;
+      margin-top: 0;
+      padding-top: 0;
+    }
+  }
+`
+
+const Divider = styled.div`
+  height: 1px;
+  width: 80%;
+  background-color: lightgrey;
+`
+
 class HomeIndex extends React.Component {
   render() {
     const siteTitle = 'David Liu Web Development'
@@ -46,19 +69,19 @@ class HomeIndex extends React.Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <Layout>
-          <Helmet>
-            <title>{siteTitle}</title>
-            <meta name="description" content={siteDescription} />
-          </Helmet>
+        <Helmet>
+          <title>{siteTitle}</title>
+          <meta name="description" content={siteDescription} />
+        </Helmet>
 
-          <div id="main">
-            <Introduction />
-            <Skills />
-            <Portfolio />
-            <ContactForm />
-          </div>
-        </Layout>
+        <AppWrapper>
+          <Introduction />
+          <Skills />
+          <Divider />
+          <Portfolio />
+          <Divider />
+          <ContactForm />
+        </AppWrapper>
       </ThemeProvider>
     )
   }

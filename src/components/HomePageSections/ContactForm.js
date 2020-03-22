@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import SectionHeader from '../typography/SectionHeader'
+import Section from '../Section'
 
-const ContactFormWrapper = styled.section`
+const ContactFormWrapper = styled(Section)`
   display: flex;
   width: 100%;
   justify-content: center;
+  text-align: center;
 `
 
 const InnerWrapper = styled.div`
