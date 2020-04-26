@@ -2,6 +2,7 @@ import React from 'react'
 import Proptypes from 'prop-types'
 import styled from 'styled-components'
 import InformationRow from './InfromationRow'
+import overlay from '../assets/images/overlay.png'
 
 const Wrapper = styled.div`
   height: 100%;
@@ -71,6 +72,56 @@ const Header = styled.div`
 
 const ImageLinkWrapper = styled.a`
   height: 300px;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+
+  &:before {
+    transition: opacity 0.2s ease-in-out;
+    background: url(${overlay});
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  &:after {
+    transition: opacity 0.2s ease-in-out;
+    border: solid 3px rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    color: #fff;
+    content: 'View Gallery';
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: _font(weight-bold);
+    left: 50%;
+    line-height: 2.25em;
+    margin: -1.25em 0 0 -3em;
+    opacity: 0;
+    padding: 0 1.5em;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    top: 50%;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    &:after {
+      opacity: 1;
+    }
+
+    &:before {
+      background: url(${overlay}), url(${overlay});
+      opacity: 1;
+    }
+  }
 `
 
 const StyledImage = styled.img`
@@ -78,6 +129,7 @@ const StyledImage = styled.img`
   width: 100%;
   object-fit: cover;
   object-position: 0 50;
+  border-radius: 4px;
 `
 
 const P = styled.p`

@@ -25,11 +25,15 @@ const StyledIcon = styled(FontAwesomeIcon)`
 const SocialMediaLinks = ({ iconColor, display, justifyContent }) => (
   <LinksWrapper justifyContent={justifyContent}>
     {display.includes('github') && (
-      <StyledIcon icon={faGithub} size="2x" color={iconColor || 'grey'} />
+      <a href="https://github.com/chihweidavidliu">
+        <StyledIcon icon={faGithub} size="2x" color={iconColor || 'grey'} />
+      </a>
     )}
 
     {display.includes('linkedin') && (
-      <StyledIcon icon={faLinkedin} size="2x" color={iconColor || 'grey'} />
+      <a href="https://www.linkedin.com/in/david-liu-a6415663/">
+        <StyledIcon icon={faLinkedin} size="2x" color={iconColor || 'grey'} />
+      </a>
     )}
   </LinksWrapper>
 )
