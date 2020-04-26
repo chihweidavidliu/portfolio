@@ -139,7 +139,11 @@ const Introduction = () => (
     </IntroImageWrapper>
 
     <LinksWrapper>
-      <SocialMediaLinks iconColor="#a2a2a2" fontSize="20px" />
+      <SocialMediaLinks
+        iconColor="#a2a2a2"
+        fontSize="20px"
+        display={['github', 'linkedin']}
+      />
     </LinksWrapper>
 
     <ChevronLink href="#about">

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import SectionHeader from '../typography/SectionHeader'
 import Section from '../Section'
+import SocialMediaLinks from '../SocialMediaLinks'
 
 const ContactFormWrapper = styled(Section)`
   display: flex;
@@ -15,39 +16,18 @@ const InnerWrapper = styled.div`
   max-width: 800px;
 `
 
-const StyledForm = styled.form`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-self: center;
-`
-
-const TopRow = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  margin-bottom: 20px;
+const LinksWrapper = styled.div`
+  margin: 20px 0px;
 `
 
 const ContactForm = () => (
   <ContactFormWrapper id="three">
     <InnerWrapper>
       <SectionHeader>Contact</SectionHeader>
-      <p>Interested in my work? Get in touch here!</p>
-
-      <StyledForm method="post" action="#">
-        <TopRow>
-          <input type="text" name="name" id="name" placeholder="Name" />
-          <input type="email" name="email" id="email" placeholder="Email" />
-        </TopRow>
-
-        <textarea name="message" id="message" placeholder="Message" rows="4" />
-      </StyledForm>
-      <ul className="actions">
-        <li>
-          <input type="submit" value="Send Message" />
-        </li>
-      </ul>
+      <p>Interested in my work? Get in touch on Linkedin!</p>
+      <LinksWrapper>
+        <SocialMediaLinks display={['linkedin']} />
+      </LinksWrapper>
     </InnerWrapper>
   </ContactFormWrapper>
 )

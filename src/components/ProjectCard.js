@@ -134,7 +134,9 @@ const ProjectCard = ({ project, toggleLightbox }) => {
         </ProjectDetails>
         <LinksWrapper>
           {project.githubLinks.map(link => (
-            <Link href={link.url}>{link.label}</Link>
+            <Link key={link.url} href={link.url}>
+              {link.label}
+            </Link>
           ))}
           {project.liveSiteLink && (
             <Link href={project.liveSiteLink}>Live Site</Link>
@@ -149,12 +151,12 @@ export default ProjectCard
 
 // Prop types
 
-const techStack = Proptypes.objectOf({
+const techStack = Proptypes.shape({
   frontEnd: Proptypes.string,
   backEnd: Proptypes.string,
 })
 
-const githubLink = Proptypes.objectOf({
+const githubLink = Proptypes.shape({
   url: Proptypes.string.isRequired,
   label: Proptypes.string.isRequired,
 })
@@ -164,12 +166,12 @@ const project = {
   images: Proptypes.array.isRequired,
   title: Proptypes.string.isRequired,
   description: Proptypes.string.isRequired,
-  techStack: Proptypes.objectOf(techStack).isRequired,
+  techStack: techStack.isRequired,
   githubLinks: Proptypes.arrayOf(githubLink).isRequired,
   liveSiteLink: Proptypes.string,
 }
 
 ProjectCard.propTypes = {
-  project: Proptypes.objectOf(project),
+  project: Proptypes.shape(project),
   toggleLightbox: Proptypes.func,
 }

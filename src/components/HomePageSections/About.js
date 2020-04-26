@@ -44,7 +44,11 @@ const About = () => (
         web applications.
         <SocialLinksLabel>
           Follow my projects on Github and Linkedin:
-          <SocialMediaLinks iconColor="#a2a2a2" fontSize="20px" />
+          <SocialMediaLinks
+            iconColor="#a2a2a2"
+            fontSize="20px"
+            display={['github', 'linkedin']}
+          />
         </SocialLinksLabel>
       </div>
       <Avatar>

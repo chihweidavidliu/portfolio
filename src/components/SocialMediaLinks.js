@@ -8,32 +8,44 @@ const StyledIcon = styled.a`
 `
 
 class SocialMediaLinks extends React.Component {
+  static propTypes = {
+    iconColor: PropTypes.string,
+    fontSize: PropTypes.string,
+    display: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }
+
   render() {
-    const { iconColor, fontSize } = this.props
+    const { iconColor, fontSize, display } = this.props
+
     return (
-      <div id="footer">
+      <div>
         <div className="inner">
           <ul className="icons">
-            <li>
-              <StyledIcon
-                color={iconColor}
-                fontSize={fontSize}
-                href="https://github.com/chihweidavidliu"
-                className="icon fa-github"
-              >
-                <span className="label">Github</span>
-              </StyledIcon>
-            </li>
-            <li>
-              <StyledIcon
-                color={iconColor}
-                fontSize={fontSize}
-                href="https://www.linkedin.com/in/david-liu-a6415663/"
-                className="icon fa-linkedin"
-              >
-                <span className="label">Linkedin</span>
-              </StyledIcon>
-            </li>
+            {display && display.includes('github') && (
+              <li>
+                <StyledIcon
+                  color={iconColor}
+                  fontSize={fontSize}
+                  href="https://github.com/chihweidavidliu"
+                  className="icon fa-github"
+                >
+                  <span className="label">Github</span>
+                </StyledIcon>
+              </li>
+            )}
+
+            {display && display.includes('linkedin') && (
+              <li>
+                <StyledIcon
+                  color={iconColor}
+                  fontSize={fontSize}
+                  href="https://www.linkedin.com/in/david-liu-a6415663/"
+                  className="icon fa-linkedin"
+                >
+                  <span className="label">Linkedn</span>
+                </StyledIcon>
+              </li>
+            )}
           </ul>
         </div>
       </div>
@@ -42,8 +54,3 @@ class SocialMediaLinks extends React.Component {
 }
 
 export default SocialMediaLinks
-
-SocialMediaLinks.propTypes = {
-  iconColor: PropTypes.string,
-  fontSize: PropTypes.string,
-}
