@@ -5,7 +5,6 @@ import InformationRow from './InfromationRow'
 import overlay from '../assets/images/overlay.png'
 
 const Wrapper = styled.div`
-  height: 100%;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -33,7 +32,7 @@ const Card = styled.div`
     flex-grow: 0;
   }
   display: grid;
-  grid-template-rows: min-content 1fr 50px;
+  grid-template-rows: min-content 1fr min-content;
   transition: border 0.4s;
   border: 1px solid transparent;
   &:hover {

@@ -12,6 +12,9 @@ const LinksWrapper = styled.div`
   > * {
     margin: 10px;
   }
+  @media (max-width: 767px) {
+    justify-content: center;
+  }
 `
 
 const StyledIcon = styled(FontAwesomeIcon)`

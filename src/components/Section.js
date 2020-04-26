@@ -5,7 +5,7 @@ const Section = styled.div`
   width: 100%;
   max-width: 1440px;
   @media (max-width: 767px) {
-    padding: 50px 25px;
+    padding: 50px 20px;
   }
 
   @media (max-width: 367px) {

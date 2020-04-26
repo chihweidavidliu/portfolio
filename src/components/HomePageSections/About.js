@@ -23,8 +23,8 @@ const SocialLinksLabel = styled.div`
   margin-top: 10px;
 `
 const Avatar = styled.div`
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   justify-self: center;
   align-self: center;
   img {
