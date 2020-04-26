@@ -41,6 +41,7 @@ const IntroImageWrapper = styled.div`
   width: 80%;
   padding: 2vw 0px;
   margin: 20px 0px;
+  height: 20vw;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
 
@@ -95,15 +96,14 @@ const ChevronLink = styled.a`
       bottom: 20px;
     }
   }
-  & {
-    margin: 40px;
-    animation: MoveUpDown 1s linear infinite;
-    position: relative;
-    left: 0;
-    bottom: 0;
-    &:hover {
-      border-bottom: dotted 1px transparent;
-    }
+
+  margin: 40px;
+  animation: MoveUpDown 2s linear infinite;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  &:hover {
+    border-bottom: dotted 1px transparent;
   }
 `
 
@@ -147,7 +147,7 @@ const Introduction = () => (
     </LinksWrapper>
 
     <ChevronLink href="#about">
-      <FontAwesomeIcon icon={faChevronDown} size="2x" />
+      <FontAwesomeIcon icon={faChevronDown} size="2x" color="grey" />
     </ChevronLink>
   </IntroductionSectionWrapper>
 )

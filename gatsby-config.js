@@ -18,7 +18,13 @@ module.exports = {
         icon: 'src/assets/images/website-icon.png', // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-sass',
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [{ family: `Source Sans Pro` }],
+      },
+    },
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-offline',
   ],
 }

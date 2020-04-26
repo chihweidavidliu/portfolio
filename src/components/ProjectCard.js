@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   text-align: center;
 `
 const ProjectDetails = styled.div`
+  margin-top: 30px;
   display: flex;
   min-width: 200px;
   justify-content: space-between;
@@ -32,8 +33,16 @@ const Card = styled.div`
   }
   display: grid;
   grid-template-rows: min-content 1fr 50px;
+  transition: border 0.4s;
+  border: 1px solid transparent;
+  &:hover {
+    border: 1px solid ${props => props.theme.accent1.bg};
+  }
 `
 
+const H3 = styled.h3`
+  color: ${props => props.theme.fgBold};
+`
 const DetailBorder = styled.div`
   width: 50%;
   @media (max-width: 600px) {
@@ -74,6 +83,7 @@ const StyledImage = styled.img`
 const P = styled.p`
   margin: 0;
   font-size: 17px;
+  color: ${props => props.theme.fgBold};
 `
 
 const LinksWrapper = styled.div`
@@ -87,6 +97,7 @@ const Link = styled.a`
   font-size: 16px;
   align-self: center;
   text-decoration: none;
+  color: ${props => props.theme.accent1.bg};
 `
 
 const ProjectCard = ({ project, toggleLightbox }) => {
@@ -95,7 +106,7 @@ const ProjectCard = ({ project, toggleLightbox }) => {
   return (
     <Wrapper id={project.title}>
       <div>
-        <h3>{project.title}</h3>
+        <H3>{project.title}</H3>
       </div>
 
       <Card>

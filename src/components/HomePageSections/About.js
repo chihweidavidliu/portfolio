@@ -5,6 +5,7 @@ import SectionHeader from '../typography/SectionHeader'
 import SocialMediaLinks from '../SocialMediaLinks'
 
 const Grid = styled.div`
+  color: ${props => props.theme.fgBold};
   display: grid;
   max-width: 800px;
   grid-gap: 30px;
@@ -45,6 +46,7 @@ const About = () => (
         <SocialLinksLabel>
           Follow my projects on Github and Linkedin:
           <SocialMediaLinks
+            justifyContent="flex-start"
             iconColor="#a2a2a2"
             fontSize="20px"
             display={['github', 'linkedin']}

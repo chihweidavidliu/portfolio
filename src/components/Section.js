@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Section = styled.div`
-  padding: 100px;
+  padding: 70px;
   width: 100%;
   max-width: 1440px;
   @media (max-width: 767px) {
