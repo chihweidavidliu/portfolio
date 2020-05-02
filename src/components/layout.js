@@ -53,7 +53,7 @@ class Layout extends React.Component {
     const { children } = this.props
 
     return (
-      <ToastProvider>
+      <ToastProvider placement="bottom-center">
         <ThemeProvider theme={theme}>
           {children}
           <GlobalStyle />

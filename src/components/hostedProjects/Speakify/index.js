@@ -161,6 +161,10 @@ const Cell = styled.span`
   }
 `
 
+const toastConfig = {
+  autoDismiss: true,
+}
+
 const Speakify = () => {
   const [inputEl] = useState(React.createRef())
   const { addToast } = useToasts()
@@ -168,13 +172,10 @@ const Speakify = () => {
     languageOptions[0].value
   )
   const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState('')
   const [file, setFile] = useState(null)
   const [cells, setCells] = useState([])
   const [hoveredCell, setHoveredCell] = useState(null)
   const [selectedCell, setSelectedCell] = useState(null)
-  const siteTitle = 'David Liu Web Development'
-  const siteDescription = 'David Liu Web Development'
 
   const handleImageUpload = () => {
     if (inputEl && inputEl.current && inputEl.current.files) {
@@ -263,13 +264,16 @@ const Speakify = () => {
       // generate a new archive
       const content = await zip.generateAsync({ type: 'blob' })
 
-      addToast('Sound files successfully generated', { appearance: 'success' })
+      addToast('Sound files successfully generated', {
+        ...toastConfig,
+        appearance: 'success',
+      })
       // initiate save dialog box
       saveAs(content, 'sounds.zip')
       setIsLoading(false)
     } catch (error) {
       setIsLoading(false)
-      addToast(error.message, { appearance: 'error' })
+      addToast(error.message, { ...toastConfig, appearance: 'error' })
     }
   }
 
