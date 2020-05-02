@@ -1,6 +1,7 @@
 import React from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import PropTypes from 'prop-types'
+import { ToastProvider } from 'react-toast-notifications'
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -52,10 +53,12 @@ class Layout extends React.Component {
     const { children } = this.props
 
     return (
-      <ThemeProvider theme={theme}>
-        {children}
-        <GlobalStyle />
-      </ThemeProvider>
+      <ToastProvider>
+        <ThemeProvider theme={theme}>
+          {children}
+          <GlobalStyle />
+        </ThemeProvider>
+      </ToastProvider>
     )
   }
 }
