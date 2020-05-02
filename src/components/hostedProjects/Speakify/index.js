@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+
 import Papa from 'papaparse'
 import { saveAs } from 'file-saver'
 import JSZip from 'jszip'
@@ -9,6 +10,7 @@ import { dummyText } from '../../../util/speakify/dummyText'
 import { languageOptions } from '../../../util/speakify/languageOptions'
 import loading from '../../../assets/images/loading.gif'
 import { getSynthesisIdForWord, getSynthesisUrlForWord } from './api'
+import asyncForEach from '../../../util/speakify/asyncForEach'
 
 const AppWrapper = styled.div`
   width: 100vw;
@@ -167,6 +169,7 @@ const toastConfig = {
 
 const Speakify = () => {
   const [inputEl] = useState(React.createRef())
+  const [progressBarEl] = useState(React.createRef())
   const { addToast } = useToasts()
   const [selectedLanguage, setSelectedLanguage] = useState(
     languageOptions[0].value
@@ -176,6 +179,7 @@ const Speakify = () => {
   const [cells, setCells] = useState([])
   const [hoveredCell, setHoveredCell] = useState(null)
   const [selectedCell, setSelectedCell] = useState(null)
+  const [loadingMessage, setLoadingMessage] = useState('')
 
   const handleImageUpload = () => {
     if (inputEl && inputEl.current && inputEl.current.files) {
@@ -215,29 +219,31 @@ const Speakify = () => {
     )
 
   const downloadSynthesisedWords = async (synthesisData, folder) =>
-    Promise.all(
-      synthesisData.map(async wordData => {
-        const { synthesisId, word } = wordData
+    asyncForEach(synthesisData, async (wordData, index) => {
+      const { synthesisId, word } = wordData
 
-        // get download url for the synthesized mp3 files
-        const data = await getSynthesisUrlForWord(synthesisId)
-        if (!data.location) {
-          throw new Error(`No mp3 url found for "${word}"`)
-        }
+      // get download url for the synthesized mp3 files
+      const data = await getSynthesisUrlForWord(synthesisId).catch(error =>
+        // dont block other promises from execution if one word is not available - catch here and resolve
+        addToast(error.message, { ...toastConfig, appearance: 'error' })
+      )
 
-        const url = data.location
+      const url = data.location
 
-        // get the binary content at that url location (get around CORS using cors-anywhere)
-        const binaryContent = await JSZipUtils.getBinaryContent(
-          `https://cors-anywhere.herokuapp.com/${url}`
-        )
+      // get the binary content at that url location (get around CORS using cors-anywhere)
+      const binaryContent = await JSZipUtils.getBinaryContent(
+        `https://cors-anywhere.herokuapp.com/${url}`
+      )
 
-        // add file to the zip folder
-        folder.file(`${word}.mp3`, binaryContent, { binary: true })
+      setLoadingMessage(
+        `Preparing file ${word}.mp3 (${index + 1}/${synthesisData.length})`
+      )
 
-        return wordData
-      })
-    )
+      // add file to the zip folder
+      folder.file(`${word}.mp3`, binaryContent, { binary: true })
+
+      return wordData
+    })
 
   const handleSynthesize = async () => {
     try {
@@ -270,10 +276,11 @@ const Speakify = () => {
       })
       // initiate save dialog box
       saveAs(content, 'sounds.zip')
-      setIsLoading(false)
     } catch (error) {
-      setIsLoading(false)
       addToast(error.message, { ...toastConfig, appearance: 'error' })
+    } finally {
+      setIsLoading(false)
+      setLoadingMessage('')
     }
   }
 
@@ -333,7 +340,10 @@ const Speakify = () => {
 
             {isLoading && (
               <div>
-                <LoadingIndicator src={loading} />{' '}
+                <LoadingIndicator src={loading} />
+                <div ref={progressBarEl}>
+                  {loadingMessage && loadingMessage}
+                </div>
               </div>
             )}
             <Button onClick={handleSynthesize} disabled={!selectedCell}>
