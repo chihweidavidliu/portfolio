@@ -199,7 +199,6 @@ const toastConfig = {
 
 const Speakify = () => {
   const [inputEl] = useState(React.createRef())
-  const [progressBarEl] = useState(React.createRef())
   const { addToast } = useToasts()
   const [selectedLanguage, setSelectedLanguage] = useState(
     languageOptions[0].value
@@ -373,9 +372,7 @@ const Speakify = () => {
             {isLoading && (
               <div>
                 <LoadingIndicator src={loading} />
-                <div ref={progressBarEl}>
-                  {loadingMessage && loadingMessage}
-                </div>
+                {loadingMessage && <div>{loadingMessage}</div>}
               </div>
             )}
             <SynthesiseButton
