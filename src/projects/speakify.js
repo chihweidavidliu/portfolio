@@ -9,7 +9,7 @@ export const speakifyProject = {
     frontEnd: 'HTML, CSS3, JQuera, papaParse, soundOfText API',
   },
   githubLinks: [],
-  liveSiteLink: 'https://davidliu.co/speakify-app',
+  liveSiteLink: '/speakify',
   images: [
     {
       source:

@@ -21,7 +21,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        fonts: [{ family: `Source Sans Pro` }],
+        fonts: [
+          { family: `Source Sans Pro` },
+          { family: `Pacifico` },
+          { family: `Nunito` },
+        ],
       },
     },
     'gatsby-plugin-styled-components',
