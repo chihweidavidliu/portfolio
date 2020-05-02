@@ -209,14 +209,16 @@ const Speakify = () => {
     setSelectedLanguage(e.target.value)
   }
 
-  const getSynthesisData = async selectedWords =>
-    Promise.all(
-      selectedWords.map(async word => {
-        const response = await getSynthesisIdForWord(word, selectedLanguage)
+  const getSynthesisData = async selectedWords => {
+    const synthesisData = []
+    await asyncForEach(selectedWords, async word => {
+      const response = await getSynthesisIdForWord(word, selectedLanguage)
 
-        return { word, synthesisId: response.id }
-      })
-    )
+      synthesisData.push({ word, synthesisId: response.id })
+    })
+
+    return synthesisData
+  }
 
   const downloadSynthesisedWords = async (synthesisData, folder) =>
     asyncForEach(synthesisData, async (wordData, index) => {
