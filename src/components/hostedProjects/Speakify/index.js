@@ -247,6 +247,15 @@ const toastConfig = {
   autoDismiss: true,
 }
 
+const parseCSV = async file =>
+  new Promise((resolve, reject) => {
+    Papa.parse(file, {
+      error: reject,
+      complete: resolve,
+      skipEmptyLines: true,
+    })
+  })
+
 const Speakify = () => {
   const [inputEl] = useState(React.createRef())
   const { addToast } = useToasts()
@@ -260,14 +269,6 @@ const Speakify = () => {
   const [selectedCell, setSelectedCell] = useState(null)
   const [loadingMessage, setLoadingMessage] = useState('')
 
-  const parseCSV = async file =>
-    new Promise((resolve, reject) => {
-      Papa.parse(file, {
-        error: reject,
-        complete: resolve,
-      })
-    })
-
   const clearState = () => {
     setCells([])
     setHoveredCell(null)
@@ -275,14 +276,40 @@ const Speakify = () => {
     setLoadingMessage('')
   }
 
-  const handleImageUpload = () => {
+  const normaliseRowLengths = csvArray => {
+    let longestRow = csvArray[0]
+
+    // work out longest row
+    csvArray.forEach(row => {
+      if (row.length > longestRow.length) {
+        longestRow = row
+      }
+    })
+
+    // fill rows with empty cells if need be
+    const filledArray = csvArray.map(row => {
+      const filled = [...row]
+      if (row.length < longestRow.length) {
+        for (let i = 0; i < longestRow.length - row.length; i += 1) {
+          filled.push('')
+        }
+      }
+
+      return filled
+    })
+
+    return filledArray
+  }
+
+  const handleFileUpload = () => {
     if (inputEl && inputEl.current && inputEl.current.files) {
       if (inputEl.current.files.length) {
         const file = inputEl.current.files[0]
         setFile(file)
         // parse csv
         return parseCSV(file).then(parsed => {
-          setCells(parsed.data.filter(row => JSON.stringify(row) !== `[""]`))
+          const formatted = normaliseRowLengths(parsed.data)
+          setCells(formatted)
         })
       }
 
@@ -422,7 +449,7 @@ const Speakify = () => {
                 id="words"
                 name="words"
                 accept=".csv"
-                onChange={handleImageUpload}
+                onChange={handleFileUpload}
               />
             </UploadWrapper>
 
