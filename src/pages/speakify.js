@@ -1,9 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useState, useEffect } from 'react'
+import Papa from 'papaparse'
+import { saveAs } from 'file-saver'
+import JSZip from 'jszip'
+import JSZipUtils from 'jszip-utils'
+import styled, { css } from 'styled-components'
 import Helmet from 'react-helmet'
+import Axios from 'axios'
 import Layout from '../components/layout'
 import { dummyText } from '../util/speakify/dummyText'
 import { languageOptions } from '../util/speakify/languageOptions'
+import loading from '../assets/images/loading.gif'
 
 const AppWrapper = styled.div`
   width: 100vw;
@@ -30,7 +36,6 @@ const Background = styled.div`
 
 const Card = styled.div`
   z-index: 2;
-  width: 700px;
   background-color: white;
   border: 1px solid lightgray;
   border-radius: 10px;
@@ -52,15 +57,246 @@ const Header = styled.h1`
 
 const Description = styled.p`
   color: gray;
+  margin: 0;
 `
 
-const Select = styled.select`
-  margin: 15px;
+const Label = styled.div`
+  margin-top: 20px;
+  margin-bottom: 5px;
 `
+
+const UploadWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+`
+const StyledInput = styled.input`
+  background-color: lightgrey;
+  border-radius: 10px;
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  &:focus,
+  &:hover {
+    background-color: gray;
+    outline: 0;
+  }
+`
+
+const LoadingIndicator = styled.img`
+  height: 100px;
+  margin: 15px;
+  animation: fadein 0.9s;
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+`
+
+const InnerGrid = styled.div`
+  display: grid;
+  grid-template-columns: ${props => (props.doubleColumn ? '1fr 1fr' : '1fr')};
+  grid-gap: 30px;
+`
+
+const Results = styled.div`
+  max-height: 60vh;
+  max-width: 50vw;
+  overflow: auto;
+  display: grid;
+  grid-template-rows: min-content max-content 1fr;
+  grid-gap: 20px;
+`
+const Select = styled.select``
+
+const Button = styled.button`
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 13px;
+  margin-top: 20px;
+  &:hover,
+  &:focus {
+    background-color: #cee5e5;
+    outline: 0;
+  }
+`
+
+const Instruction = styled.div`
+  font-weight: bold;
+  text-decoration: underline;
+`
+
+const Row = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+  border: 1px solid grey;
+  border-bottom: none;
+  &:last-child {
+    border-bottom: 1px solid grey;
+  }
+`
+
+const Cell = styled.span`
+  border-right: 1px solid grey;
+  ${props =>
+    props.isSelected &&
+    css`
+      background-color: teal;
+      color: white;
+    `}
+  ${props =>
+    props.isHovered &&
+    css`
+      background-color: lightgrey;
+    `}
+  cursor: pointer;
+  &:last-child {
+    border-right: none;
+  }
+`
+
+const getSynthesisIdForWord = async (word, selectedLanguage) => {
+  const response = await Axios.post('https://api.soundoftext.com/sounds', {
+    engine: 'Google',
+    data: { text: word, voice: selectedLanguage },
+  })
+
+  return response.data
+}
+
+const getSynthesisUrlForWord = async synthesisId => {
+  const response = await Axios.get(
+    `https://api.soundoftext.com/sounds/${synthesisId}`
+  )
+  return response.data
+}
 
 const Speakify = () => {
+  const [inputEl] = useState(React.createRef())
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    languageOptions[0].value
+  )
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [file, setFile] = useState(null)
+  const [cells, setCells] = useState([])
+  const [hoveredCell, setHoveredCell] = useState(null)
+  const [selectedCell, setSelectedCell] = useState(null)
   const siteTitle = 'David Liu Web Development'
   const siteDescription = 'David Liu Web Development'
+
+  const handleImageUpload = () => {
+    if (inputEl && inputEl.current && inputEl.current.files) {
+      const file = inputEl.current.files[0]
+      setFile(file)
+    }
+  }
+
+  const parseCSV = async file =>
+    new Promise((resolve, reject) => {
+      Papa.parse(file, {
+        error: reject,
+        complete: resolve,
+      })
+    })
+
+  useEffect(() => {
+    if (file) {
+      // parse csv
+      parseCSV(file).then(parsed => {
+        setCells(parsed.data.filter(row => JSON.stringify(row) !== `[""]`))
+      })
+    }
+  }, [file])
+
+  const handleLanguageSelect = e => {
+    setSelectedLanguage(e.target.value)
+  }
+
+  const getSynthesisData = async selectedWords =>
+    Promise.all(
+      selectedWords.map(async word => {
+        const response = await getSynthesisIdForWord(word, selectedLanguage)
+
+        return { word, synthesisId: response.id }
+      })
+    )
+
+  const downloadSynthesisedWords = async (synthesisData, folder) =>
+    Promise.all(
+      synthesisData.map(async wordData => {
+        const { synthesisId, word } = wordData
+
+        // get download url for the synthesized mp3 files
+        const response = await getSynthesisUrlForWord(synthesisId)
+        const url = response.data.location
+
+        // get the binary content at that url location (get around CORS using cors-anywhere)
+        const binaryContent = await JSZipUtils.getBinaryContent(
+          `https://cors-anywhere.herokuapp.com/${url}`
+        )
+
+        // add file to the zip folder
+        folder.file(`${word}.mp3`, binaryContent, { binary: true })
+
+        return wordData
+      })
+    )
+
+  const handleSynthesize = async () => {
+    try {
+      if (!file || !selectedCell) {
+        return alert('Please select a file')
+      }
+
+      setIsLoading(true)
+      // remove .csv extension
+      const folderName = file.name.replace('.csv', '')
+      const zip = new JSZip()
+      const folder = zip.folder(folderName)
+
+      console.log('folderName', folderName)
+
+      const selectedWords = cells
+        .filter((row, index) => index >= selectedCell.rowIndex)
+        .map(row => row[selectedCell.columnIndex])
+
+      console.log('selectedWords', selectedWords)
+
+      // get soundOfText api ids for each word and add it to selected word objects
+      const synthesisData = await getSynthesisData(selectedWords)
+
+      // download the word mp3s to the zip folder
+      await downloadSynthesisedWords(synthesisData, folder)
+
+      // generate a new archive
+      const content = await zip.generateAsync({ type: 'blob' })
+
+      // initiate save dialog box
+      saveAs(content, 'sounds.zip')
+      setIsLoading(false)
+    } catch (error) {
+      // TODO: implement better error handling
+      alert(error)
+    }
+  }
+
+  const handleCellMouseOver = (rowIndex, columnIndex) => {
+    setHoveredCell({ rowIndex, columnIndex })
+  }
+
+  const handleCellClick = (rowIndex, columnIndex) => {
+    setSelectedCell({ rowIndex, columnIndex })
+  }
+
+  const clearCellSelection = () => setSelectedCell(null)
 
   return (
     <Layout>
@@ -80,14 +316,99 @@ const Speakify = () => {
             wordlists.
           </Description>
 
-          <label htmlFor="languages">Choose a language</label>
-          <Select className="field__Select" name="languages" id="languages">
-            {languageOptions.map(option => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </Select>
+          <InnerGrid doubleColumn={cells.length > 0}>
+            <div>
+              <Label>Choose a language</Label>
+              <Select
+                name="languages"
+                id="languages"
+                onChange={handleLanguageSelect}
+                value={selectedLanguage}
+              >
+                {languageOptions.map(option => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </Select>
+
+              <Label>Choose a CSV file:</Label>
+              <Description>
+                Words should be in individual cells in the first column of the
+                CSV file.
+              </Description>
+
+              <UploadWrapper>
+                <StyledInput
+                  ref={inputEl}
+                  type="file"
+                  id="words"
+                  name="words"
+                  accept=".csv"
+                  onChange={handleImageUpload}
+                />
+              </UploadWrapper>
+
+              {isLoading && (
+                <div>
+                  <LoadingIndicator src={loading} />{' '}
+                </div>
+              )}
+              <Button onClick={handleSynthesize} disabled={!selectedCell}>
+                Synthesise
+              </Button>
+            </div>
+
+            {cells.length > 0 && (
+              <Results>
+                <div>
+                  <Instruction>
+                    Select the column of words to synthesize (click on the first
+                    word excluding any column header)
+                  </Instruction>
+                  <Button onClick={clearCellSelection}>Clear Selection</Button>
+                </div>
+
+                <div>
+                  {cells.map((row, rowIndex) => (
+                    <Row key={`${row[0]}-${rowIndex}-row`}>
+                      {row.map((cell, columnIndex) => {
+                        const isSelected =
+                          selectedCell &&
+                          rowIndex >= selectedCell.rowIndex &&
+                          columnIndex === selectedCell.columnIndex
+
+                        const isHovered =
+                          hoveredCell &&
+                          !isSelected &&
+                          rowIndex >= hoveredCell.rowIndex &&
+                          columnIndex === hoveredCell.columnIndex
+
+                        return (
+                          <Cell
+                            key={`${cell}-${columnIndex}-cell`}
+                            isHovered={isHovered}
+                            isSelected={isSelected}
+                            onMouseOver={() =>
+                              handleCellMouseOver(rowIndex, columnIndex)
+                            }
+                            onFocus={() => {
+                              handleCellMouseOver(rowIndex, columnIndex)
+                            }}
+                            onClick={() =>
+                              handleCellClick(rowIndex, columnIndex)
+                            }
+                          >
+                            {cell}
+                          </Cell>
+                        )
+                      })}
+                    </Row>
+                  ))}
+                </div>
+              </Results>
+            )}
+          </InnerGrid>
         </Card>
       </AppWrapper>
     </Layout>
