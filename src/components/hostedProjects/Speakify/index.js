@@ -300,19 +300,47 @@ const Speakify = () => {
     return filledArray
   }
 
-  const handleFileUpload = () => {
+  const checkTableSize = tableArray => {
+    const rowCount = tableArray.length
+    const columnCount = tableArray[0] ? tableArray[0].length : 0
+
+    if (rowCount > 100 || columnCount > 10) {
+      return false
+    }
+
+    return true
+  }
+
+  const handleError = message =>
+    addToast(message, {
+      ...toastConfig,
+      appearance: 'error',
+    })
+
+  const handleFileUpload = async () => {
     if (inputEl && inputEl.current && inputEl.current.files) {
       if (inputEl.current.files.length) {
         const file = inputEl.current.files[0]
+        // wipe slate clean
         clearState()
-        setFile(file)
-        // parse csv
-        return parseCSV(file).then(parsed => {
-          const formatted = normaliseRowLengths(parsed.data)
-          setCells(formatted)
-        })
-      }
 
+        setFile(file)
+        const parsed = await parseCSV(file)
+        const formatted = normaliseRowLengths(parsed.data)
+
+        // check size before rendering table
+        const isTableValidSize = checkTableSize(formatted)
+
+        if (isTableValidSize) {
+          return setCells(formatted)
+        }
+
+        clearState()
+        return handleError(
+          'Maximum table size exceeded (10 columns x 100 rows)'
+        )
+      }
+      // clear state if no file
       clearState()
     }
   }
@@ -339,7 +367,7 @@ const Speakify = () => {
       // get download url for the synthesized mp3 files
       const data = await getSynthesisUrlForWord(synthesisId).catch(error =>
         // dont block other promises from execution if one word is not available - catch here and resolve
-        addToast(error.message, { ...toastConfig, appearance: 'error' })
+        handleError(error.message)
       )
 
       const url = data.location
@@ -392,7 +420,7 @@ const Speakify = () => {
       // initiate save dialog box
       saveAs(content, 'sounds.zip')
     } catch (error) {
-      addToast(error.message, { ...toastConfig, appearance: 'error' })
+      handleError(error.message)
     } finally {
       setIsLoading(false)
       setLoadingMessage('')
