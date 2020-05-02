@@ -235,8 +235,12 @@ const Speakify = () => {
         const { synthesisId, word } = wordData
 
         // get download url for the synthesized mp3 files
-        const response = await getSynthesisUrlForWord(synthesisId)
-        const url = response.data.location
+        const data = await getSynthesisUrlForWord(synthesisId)
+        if (!data.location) {
+          throw new Error(`No mp3 url found for "${word}"`)
+        }
+
+        const url = data.location
 
         // get the binary content at that url location (get around CORS using cors-anywhere)
         const binaryContent = await JSZipUtils.getBinaryContent(
@@ -262,13 +266,9 @@ const Speakify = () => {
       const zip = new JSZip()
       const folder = zip.folder(folderName)
 
-      console.log('folderName', folderName)
-
       const selectedWords = cells
         .filter((row, index) => index >= selectedCell.rowIndex)
         .map(row => row[selectedCell.columnIndex])
-
-      console.log('selectedWords', selectedWords)
 
       // get soundOfText api ids for each word and add it to selected word objects
       const synthesisData = await getSynthesisData(selectedWords)
@@ -284,6 +284,7 @@ const Speakify = () => {
       setIsLoading(false)
     } catch (error) {
       // TODO: implement better error handling
+      setIsLoading(false)
       alert(error)
     }
   }
