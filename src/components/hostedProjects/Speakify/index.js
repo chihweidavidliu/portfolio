@@ -75,8 +75,6 @@ const StyledInput = styled.input`
   background-color: lightgrey;
   border-radius: 10px;
   padding: 10px;
-  height: 100%;
-  width: 100%;
   &:focus,
   &:hover {
     background-color: gray;
@@ -125,6 +123,38 @@ const Button = styled.button`
   &:focus {
     background-color: #cee5e5;
     outline: 0;
+  }
+`
+
+const SynthesiseButton = styled(Button)`
+  font-size: 20px;
+  padding: 15px;
+  border: 2px solid ${props => (props.disabled ? 'grey' : 'teal')};
+  color: ${props => (props.disabled ? 'grey' : 'teal')};
+  margin-top: 40px;
+  ${props =>
+    props.disabled
+      ? css`
+          cursor: not-allowed;
+          &:hover {
+            background-color: white;
+          }
+        `
+      : css`
+          animation: activate 0.5s;
+        `};
+
+  @keyframes activate {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.4);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 `
 
@@ -348,9 +378,12 @@ const Speakify = () => {
                 </div>
               </div>
             )}
-            <Button onClick={handleSynthesize} disabled={!selectedCell}>
+            <SynthesiseButton
+              onClick={handleSynthesize}
+              disabled={!selectedCell}
+            >
               Synthesise
-            </Button>
+            </SynthesiseButton>
           </div>
 
           {cells.length > 0 && (
