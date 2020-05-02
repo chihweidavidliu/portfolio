@@ -20,7 +20,6 @@ const AppWrapper = styled.div`
   align-items: center;
   font-family: 'Nunito', sans-serif;
   background-color: teal;
-  overflow: hidden;
 `
 
 const Background = styled.div`
@@ -48,6 +47,8 @@ const Card = styled.div`
   flex-direction: column;
   text-align: center;
 `
+
+const InputWrapper = styled.div``
 
 const Header = styled.h1`
   font-family: 'Pacifico', cursive;
@@ -132,6 +133,7 @@ const Results = styled.div`
   grid-template-rows: min-content max-content 1fr;
   grid-gap: 20px;
   animation: fadein 0.8s;
+
   @keyframes fadein {
     from {
       opacity: 0;
@@ -144,8 +146,11 @@ const Results = styled.div`
 
 const Table = styled.div`
   max-height: 40vh;
-  max-width: 50vw;
   overflow: auto;
+  border: 1px solid lightgrey;
+  justify-self: center;
+  max-width: 100%;
+
   @media (max-width: 767px) {
     max-width: 100%;
   }
@@ -215,22 +220,19 @@ const Instruction = styled.div`
 
 const Row = styled.div`
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
-  border: 1px solid grey;
-  border-bottom: none;
-  &:last-child {
-    border-bottom: 1px solid grey;
-  }
+  display: flex;
 `
 
 const Cell = styled.span`
-  border-right: 1px solid grey;
+  width: 100px;
+  flex-shrink: 0;
+  border: 1px solid lightgrey;
   ${props =>
     props.isSelected &&
     css`
       background-color: teal;
       color: white;
+      border: 1px solid teal;
     `}
   ${props =>
     props.isHovered &&
@@ -238,9 +240,6 @@ const Cell = styled.span`
       background-color: lightgrey;
     `}
   cursor: pointer;
-  &:last-child {
-    border-right: none;
-  }
 `
 
 const toastConfig = {
@@ -305,6 +304,7 @@ const Speakify = () => {
     if (inputEl && inputEl.current && inputEl.current.files) {
       if (inputEl.current.files.length) {
         const file = inputEl.current.files[0]
+        clearState()
         setFile(file)
         // parse csv
         return parseCSV(file).then(parsed => {
@@ -421,7 +421,7 @@ const Speakify = () => {
         </Description>
 
         <InnerGrid doubleColumn={cells.length > 0}>
-          <div>
+          <InputWrapper>
             <Label>Choose a language</Label>
             <Select
               name="languages"
@@ -473,7 +473,7 @@ const Speakify = () => {
                 </CancelButton>
               </div>
             )}
-          </div>
+          </InputWrapper>
 
           <Divider />
 
