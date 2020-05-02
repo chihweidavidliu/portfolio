@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-
+import React, { useState } from 'react'
 import Papa from 'papaparse'
 import { saveAs } from 'file-saver'
 import JSZip from 'jszip'
@@ -71,19 +70,22 @@ const UploadWrapper = styled.div`
   justify-content: center;
   margin-top: 15px;
 `
+
 const StyledInput = styled.input`
-  background-color: lightgrey;
+  cursor: pointer;
   border-radius: 10px;
   padding: 10px;
+  border: 2px solid lightgrey;
   &:focus,
   &:hover {
-    background-color: gray;
+    border: 2px solid teal;
     outline: 0;
   }
 `
 
 const LoadingIndicator = styled.img`
   height: 100px;
+  width: 100px;
   margin: 15px;
   animation: fadein 0.9s;
   @keyframes fadein {
@@ -98,17 +100,55 @@ const LoadingIndicator = styled.img`
 
 const InnerGrid = styled.div`
   display: grid;
-  grid-template-columns: ${props => (props.doubleColumn ? '1fr 1fr' : '1fr')};
+  grid-template-columns: ${props =>
+    props.doubleColumn ? '1fr min-content 1fr' : '1fr'};
   grid-gap: 30px;
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-height: 60vh;
+    overflow: auto;
+    > * {
+      justify-self: center;
+    }
+  }
+`
+
+const Divider = styled.div`
+  height: 80%;
+  width: 2px;
+  margin: auto 20px;
+  background-color: lightgrey;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    height: 2px;
+    margin: 20px auto;
+  }
 `
 
 const Results = styled.div`
-  max-height: 60vh;
-  max-width: 50vw;
-  overflow: auto;
   display: grid;
   grid-template-rows: min-content max-content 1fr;
   grid-gap: 20px;
+  animation: fadein 0.8s;
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+`
+
+const Table = styled.div`
+  max-height: 40vh;
+  max-width: 50vw;
+  overflow: auto;
+  @media (max-width: 767px) {
+    max-width: 100%;
+  }
 `
 const Select = styled.select``
 
@@ -126,11 +166,20 @@ const Button = styled.button`
   }
 `
 
+const CancelButton = styled(Button)`
+  border: 2px solid #b50101;
+  color: #b50101;
+  &:hover {
+    background-color: #b50101;
+    color: white;
+  }
+`
+
 const SynthesiseButton = styled(Button)`
   font-size: 20px;
   padding: 15px;
-  border: 2px solid ${props => (props.disabled ? 'grey' : 'teal')};
-  color: ${props => (props.disabled ? 'grey' : 'teal')};
+  border: 2px solid ${props => (props.disabled ? 'lightgrey' : 'teal')};
+  color: ${props => (props.disabled ? 'lightgrey' : 'teal')};
   margin-top: 40px;
   ${props =>
     props.disabled
@@ -159,6 +208,7 @@ const SynthesiseButton = styled(Button)`
 `
 
 const Instruction = styled.div`
+  margin-top: 20px;
   font-weight: bold;
   text-decoration: underline;
 `
@@ -210,13 +260,6 @@ const Speakify = () => {
   const [selectedCell, setSelectedCell] = useState(null)
   const [loadingMessage, setLoadingMessage] = useState('')
 
-  const handleImageUpload = () => {
-    if (inputEl && inputEl.current && inputEl.current.files) {
-      const file = inputEl.current.files[0]
-      setFile(file)
-    }
-  }
-
   const parseCSV = async file =>
     new Promise((resolve, reject) => {
       Papa.parse(file, {
@@ -225,14 +268,27 @@ const Speakify = () => {
       })
     })
 
-  useEffect(() => {
-    if (file) {
-      // parse csv
-      parseCSV(file).then(parsed => {
-        setCells(parsed.data.filter(row => JSON.stringify(row) !== `[""]`))
-      })
+  const clearState = () => {
+    setCells([])
+    setHoveredCell(null)
+    setSelectedCell(null)
+    setLoadingMessage('')
+  }
+
+  const handleImageUpload = () => {
+    if (inputEl && inputEl.current && inputEl.current.files) {
+      if (inputEl.current.files.length) {
+        const file = inputEl.current.files[0]
+        setFile(file)
+        // parse csv
+        return parseCSV(file).then(parsed => {
+          setCells(parsed.data.filter(row => JSON.stringify(row) !== `[""]`))
+        })
+      }
+
+      clearState()
     }
-  }, [file])
+  }
 
   const handleLanguageSelect = e => {
     setSelectedLanguage(e.target.value)
@@ -283,6 +339,7 @@ const Speakify = () => {
       }
 
       setIsLoading(true)
+      setLoadingMessage('Preparing synthesis...')
       // remove .csv extension
       const folderName = file.name.replace('.csv', '')
       const zip = new JSZip()
@@ -381,7 +438,17 @@ const Speakify = () => {
             >
               Synthesise
             </SynthesiseButton>
+
+            {isLoading && (
+              <div>
+                <CancelButton onClick={() => window.location.reload()}>
+                  Cancel
+                </CancelButton>
+              </div>
+            )}
           </div>
+
+          <Divider />
 
           {cells.length > 0 && (
             <Results>
@@ -393,7 +460,7 @@ const Speakify = () => {
                 <Button onClick={clearCellSelection}>Clear Selection</Button>
               </div>
 
-              <div>
+              <Table>
                 {cells.map((row, rowIndex) => (
                   <Row key={`${row[0]}-${rowIndex}-row`}>
                     {row.map((cell, columnIndex) => {
@@ -427,7 +494,7 @@ const Speakify = () => {
                     })}
                   </Row>
                 ))}
-              </div>
+              </Table>
             </Results>
           )}
         </InnerGrid>
