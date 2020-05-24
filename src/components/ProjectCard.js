@@ -196,12 +196,14 @@ const ProjectCard = ({ project, toggleLightbox }) => {
         </ProjectDetails>
         <LinksWrapper>
           {project.githubLinks.map(link => (
-            <Link key={link.url} href={link.url}>
+            <Link key={link.url} href={link.url} target="_blank">
               {link.label}
             </Link>
           ))}
           {project.liveSiteLink && (
-            <Link href={project.liveSiteLink}>Live Site</Link>
+            <Link href={project.liveSiteLink} target="_blank">
+              Live Site
+            </Link>
           )}
         </LinksWrapper>
       </Card>

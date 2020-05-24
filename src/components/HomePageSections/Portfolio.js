@@ -7,12 +7,14 @@ import { myInternshipProject } from '../../projects/myInternship'
 import { speakifyProject } from '../../projects/speakify'
 import SectionHeader from '../typography/SectionHeader'
 import Section from '../Section'
+import { snakeProject } from '../../projects/snake'
 
 const PROJECTS = [
   lingualinkProject,
   taskMasterProject,
   myInternshipProject,
   speakifyProject,
+  snakeProject,
 ]
 
 const Portfolio = () => (
