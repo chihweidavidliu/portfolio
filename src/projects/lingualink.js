@@ -29,6 +29,11 @@ export const lingualinkProject = {
     },
     {
       source:
+        'https://res.cloudinary.com/dhccfu1un/image/upload/c_scale,w_1300/v1590749183/Lingualink/Screenshot_2020-05-29_at_11.45.17_jrpshx.png',
+      caption: 'Exercise in progress',
+    },
+    {
+      source:
         'https://res.cloudinary.com/dhccfu1un/image/upload/v1584202924/portfolio/lingualink/lingualink-SessionStats-min_ojbpgb.png',
       caption: 'Session Feedback',
     },
