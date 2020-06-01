@@ -8,8 +8,10 @@ import { speakifyProject } from '../../projects/speakify'
 import SectionHeader from '../typography/SectionHeader'
 import Section from '../Section'
 import { snakeProject } from '../../projects/snake'
+import { meteorsProject } from '../../projects/meteors'
 
 const PROJECTS = [
+  meteorsProject,
   lingualinkProject,
   taskMasterProject,
   myInternshipProject,
