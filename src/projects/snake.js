@@ -14,7 +14,7 @@ export const snakeProject = {
       label: 'Source Code',
     },
   ],
-  liveSiteLink: 'https://determined-blackwell-11f92b.netlify.app/',
+  liveSiteLink: 'https://snake-classic-clone.netlify.app/',
   images: [
     {
       source:
