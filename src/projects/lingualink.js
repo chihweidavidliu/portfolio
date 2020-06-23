@@ -14,7 +14,7 @@ export const lingualinkProject = {
   images: [
     {
       source:
-        'https://res.cloudinary.com/dhccfu1un/image/upload/v1584202924/portfolio/lingualink/lingualink-StudentDashboard-min-1-1024x590_reypbb.png',
+        'https://res.cloudinary.com/dhccfu1un/image/upload/v1584202924/portfolio/lingualink/lingualink-student-detail_mzbai1.png',
       caption: 'Student Dashboard',
     },
     {
