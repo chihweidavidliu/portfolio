@@ -18,9 +18,15 @@ const Grid = styled.div`
   }
 `
 
+const TextContent = styled.div`
+  display: grid;
+  grid-gap: 10px;
+`
+
 const SocialLinksLabel = styled.div`
   font-size: 16px;
-  margin-top: 10px;
+  display: grid;
+  grid-gap: 5px;
 `
 const Avatar = styled.div`
   height: 150px;
@@ -38,11 +44,15 @@ const About = () => (
   <Section id="about">
     <SectionHeader>About Me</SectionHeader>
     <Grid>
-      <div>
-        I’m a self-taught full-stack web developer who creates beautiful,
-        powerful web apps using a range of modern technologies. <br />I am
-        available for freelance work, with a special interest in creating rich
-        web applications.
+      <TextContent>
+        <div>
+          I’m a self-taught full-stack web developer who creates beautiful,
+          powerful web apps using a range of modern technologies.
+        </div>
+        <div>
+          I am available for freelance work, with a special interest in creating
+          rich web applications.
+        </div>
         <SocialLinksLabel>
           Follow my projects on Github and Linkedin:
           <SocialMediaLinks
@@ -52,7 +62,7 @@ const About = () => (
             display={['github', 'linkedin']}
           />
         </SocialLinksLabel>
-      </div>
+      </TextContent>
       <Avatar>
         <img
           src="https://avatars3.githubusercontent.com/u/40054735?s=460&u=bc4a2fdebed23da2de159078dec770b5ea99ad3c&v=4"
