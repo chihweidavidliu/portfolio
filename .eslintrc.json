@@ -1,5 +1,8 @@
 {
-  "extends": ["wesbos"],
+  "extends": ["wesbos", "plugin:jsx-a11y/recommended"],
+  "plugins": [
+    "jsx-a11y"
+  ],
   "rules": {
     "no-shadow": "off"
   }

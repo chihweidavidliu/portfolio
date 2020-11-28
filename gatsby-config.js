@@ -19,13 +19,15 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [
-          { family: `Source Sans Pro` },
-          { family: `Pacifico` },
-          { family: `Nunito` },
-        ],
+        fonts: {
+          google: [
+            { family: `Source Sans Pro` },
+            { family: `Pacifico` },
+            { family: `Nunito` },
+          ],
+        },
       },
     },
     'gatsby-plugin-styled-components',
