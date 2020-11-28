@@ -12,7 +12,7 @@ const Welcome = styled(SectionHeader)`
   margin-bottom: 20px;
 `
 
-const IntroductionSectionWrapper = styled.div`
+const IntroductionSectionWrapper = styled.section`
   min-height: 100vh;
   height: 100vh;
   width: 100%;
@@ -109,9 +109,9 @@ const ChevronLink = styled.a`
 
 const Introduction = () => (
   <IntroductionSectionWrapper>
-    <header>
+    <div>
       <Welcome>Hi, I'm David,</Welcome>
-    </header>
+    </div>
 
     <P>a full-stack web developer based in London</P>
 
@@ -146,7 +146,7 @@ const Introduction = () => (
       />
     </LinksWrapper>
 
-    <ChevronLink href="#about">
+    <ChevronLink href="#about" aria-label="navigate-to-next-section">
       <FontAwesomeIcon icon={faChevronDown} size="2x" color="grey" />
     </ChevronLink>
   </IntroductionSectionWrapper>

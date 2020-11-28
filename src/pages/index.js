@@ -9,7 +9,7 @@ import Introduction from '../components/HomePageSections/Introduction'
 import About from '../components/HomePageSections/About'
 import Layout from '../components/layout'
 
-const AppWrapper = styled.div`
+const AppWrapper = styled.main`
   width: 100vw;
   max-width: 100vw;
   display: grid;
@@ -31,6 +31,7 @@ class HomeIndex extends React.Component {
       <Layout>
         <Helmet>
           <title>{siteTitle}</title>
+          <html lang="en" />
           <meta name="description" content={siteDescription} />
         </Helmet>
 

@@ -3,7 +3,7 @@
     "jsx-a11y",
     "styled-components-a11y"
   ],
-  "extends": ["wesbos", "plugin:jsx-a11y/recommended", "plugin:styled-components-a11y/recommended"],
+  "extends": ["wesbos", "plugin:jsx-a11y/strict", "plugin:styled-components-a11y/strict"],
   "rules": {
     "no-shadow": "off",
     "styled-components-a11y/no-onchange": "off",

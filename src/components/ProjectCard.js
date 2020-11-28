@@ -40,8 +40,9 @@ const Card = styled.div`
   }
 `
 
-const H3 = styled.h3`
+const H2 = styled.h2`
   color: ${props => props.theme.fgBold};
+  font-size: 20px;
 `
 const DetailBorder = styled.div`
   width: 50%;
@@ -157,13 +158,15 @@ const ProjectCard = ({ project, toggleLightbox }) => {
   return (
     <Wrapper id={project.title}>
       <div>
-        <H3>{project.title}</H3>
+        <H2>{project.title}</H2>
       </div>
 
       <Card>
         <ImageLinkWrapper
           className="image fit thumb"
           href={mainImage.source}
+          aria-label={`${project.title}-gallery`}
+          alt={mainImage.description}
           onClick={e => {
             e.preventDefault()
             toggleLightbox(project)
@@ -196,12 +199,21 @@ const ProjectCard = ({ project, toggleLightbox }) => {
         </ProjectDetails>
         <LinksWrapper>
           {project.githubLinks.map(link => (
-            <Link key={link.url} href={link.url} target="_blank">
+            <Link
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              aria-label={`${project.title}-Github-${link.label}`}
+            >
               {link.label}
             </Link>
           ))}
           {project.liveSiteLink && (
-            <Link href={project.liveSiteLink} target="_blank">
+            <Link
+              href={project.liveSiteLink}
+              target="_blank"
+              aria-label={`${project.title}-live-site`}
+            >
               Live Site
             </Link>
           )}

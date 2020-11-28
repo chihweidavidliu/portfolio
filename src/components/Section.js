@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Section = styled.div`
+const Section = styled.section`
   padding: 70px;
   width: 100%;
   max-width: 1440px;
