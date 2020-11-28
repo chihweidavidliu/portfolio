@@ -10,6 +10,7 @@ const Welcome = styled(SectionHeader)`
   color: white;
   margin: 0;
   margin-bottom: 20px;
+  text-shadow: 2px 2px 30px #001827;
 `
 
 const IntroductionSectionWrapper = styled.section`
@@ -31,6 +32,7 @@ const IntroductionSectionWrapper = styled.section`
 const P = styled.p`
   margin: 0;
   font-size: 22px;
+  text-shadow: 2px 2px 20px #001827;
   strong {
     font-weight: 800;
     font-size: 24px;

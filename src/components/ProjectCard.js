@@ -44,6 +44,7 @@ const H2 = styled.h2`
   color: ${props => props.theme.fgBold};
   font-size: 20px;
 `
+
 const DetailBorder = styled.div`
   width: 50%;
   @media (max-width: 600px) {
@@ -66,7 +67,7 @@ const Spacer = styled.div`
 
 const Header = styled.div`
   margin-bottom: 10px;
-  color: #3a8e75;
+  color: #347c67;
   font-weight: 800;
 `
 
@@ -165,7 +166,7 @@ const ProjectCard = ({ project, toggleLightbox }) => {
         <ImageLinkWrapper
           className="image fit thumb"
           href={mainImage.source}
-          aria-label={`${project.title}-gallery`}
+          aria-label={`${project.title}-project-gallery`}
           alt={mainImage.description}
           onClick={e => {
             e.preventDefault()
