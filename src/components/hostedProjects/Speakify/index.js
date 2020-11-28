@@ -240,6 +240,10 @@ const Cell = styled.span`
       background-color: lightgrey;
     `}
   cursor: pointer;
+  &:focus {
+    outline: none;
+    border: 1px solid #006666;
+  }
 `
 
 const toastConfig = {
@@ -483,7 +487,7 @@ const Speakify = () => {
 
             {isLoading && (
               <div>
-                <LoadingIndicator src={loading} />
+                <LoadingIndicator src={loading} alt="loading-indicator" />
                 {loadingMessage && <div>{loadingMessage}</div>}
               </div>
             )}
@@ -532,6 +536,8 @@ const Speakify = () => {
 
                       return (
                         <Cell
+                          tabIndex={0}
+                          role="button"
                           key={`${cell}-${columnIndex}-cell`}
                           isHovered={isHovered}
                           isSelected={isSelected}
@@ -542,6 +548,11 @@ const Speakify = () => {
                             handleCellMouseOver(rowIndex, columnIndex)
                           }}
                           onClick={() => handleCellClick(rowIndex, columnIndex)}
+                          onKeyDown={e => {
+                            if (e.key === 'Enter') {
+                              handleCellClick(rowIndex, columnIndex)
+                            }
+                          }}
                         >
                           {cell}
                         </Cell>
