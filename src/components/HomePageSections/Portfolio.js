@@ -4,18 +4,18 @@ import PortfolioGallery from '../PortfolioGallery'
 import { lingualinkProject } from '../../projects/lingualink'
 import { taskMasterProject } from '../../projects/taskMaster'
 import { myInternshipProject } from '../../projects/myInternship'
-import { speakifyProject } from '../../projects/speakify'
 import SectionHeader from '../typography/SectionHeader'
 import Section from '../Section'
 import { snakeProject } from '../../projects/snake'
 import { meteorsProject } from '../../projects/meteors'
+import { decisionMakerProject } from '../../projects/decisionMaker'
 
 const PROJECTS = [
+  decisionMakerProject,
   meteorsProject,
   lingualinkProject,
   taskMasterProject,
   myInternshipProject,
-  speakifyProject,
   snakeProject,
 ]
 

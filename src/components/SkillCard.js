@@ -18,13 +18,19 @@ const SkillCardWrapper = styled.div`
 `
 
 const Header = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   color: #347c67;
   text-align: center;
   strong {
     margin-left: 10px;
     font-weight: 800;
+    font-size: 20px;
   }
+`
+
+const SubSection = styled.div`
+  display: grid;
+  grid-gap: 15px;
 `
 
 const SkillCard = ({ title, icon, categories }) => (
@@ -33,15 +39,15 @@ const SkillCard = ({ title, icon, categories }) => (
       <FontAwesomeIcon icon={icon} />
       <strong>{title}</strong>
     </Header>
-    <div>
+    <SubSection>
       {categories.map(category => (
         <InformationRow
           key={category.name}
           title={category.name}
-          value={category.content}
+          values={category.content}
         />
       ))}
-    </div>
+    </SubSection>
   </SkillCardWrapper>
 )
 

@@ -6,8 +6,15 @@ export const myInternshipProject = {
   description:
     'A powerful internship management app designed for JinWen University of Science and Technology. Students and companies rank their top choices and the app automatically finds the ideal match based on those preferences.',
   techStack: {
-    frontEnd: 'HTML, CSS3, React, Redux',
-    backEnd: 'Node.js, Express, Passport.js, Mongoose, Mongodb, i18next ',
+    frontEnd: ['HTML', 'CSS3', 'React', 'Redux'],
+    backEnd: [
+      'Node.js',
+      'Express',
+      'Passport.js',
+      'Mongoose',
+      'Mongodb',
+      'i18next',
+    ],
   },
   githubLinks: [
     {

@@ -66,9 +66,10 @@ const Spacer = styled.div`
 `
 
 const Header = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   color: #347c67;
   font-weight: 800;
+  font-size: 20px;
 `
 
 const ImageLinkWrapper = styled.a`
@@ -123,6 +124,11 @@ const ImageLinkWrapper = styled.a`
       opacity: 1;
     }
   }
+`
+
+const SubSection = styled.div`
+  display: grid;
+  grid-gap: 15px;
 `
 
 const StyledImage = styled.img`
@@ -186,16 +192,19 @@ const ProjectCard = ({ project, toggleLightbox }) => {
 
           <DetailBorder>
             <Header>Tech Stack</Header>
-            <InformationRow
-              title="Front End"
-              value={project.techStack.frontEnd}
-            />
-            {project.techStack.backEnd && (
+
+            <SubSection>
               <InformationRow
-                title="Back End"
-                value={project.techStack.backEnd}
+                title="Front End"
+                values={project.techStack.frontEnd}
               />
-            )}
+              {project.techStack.backEnd && (
+                <InformationRow
+                  title="Back End"
+                  values={project.techStack.backEnd}
+                />
+              )}
+            </SubSection>
           </DetailBorder>
         </ProjectDetails>
         <LinksWrapper>

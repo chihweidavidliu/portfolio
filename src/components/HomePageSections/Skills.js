@@ -12,45 +12,63 @@ import Section from '../Section'
 const frontEndCategories = [
   {
     name: 'Fundamentals',
-    content: 'HTML, CSS, Javascript (+ Typescript)',
+    content: ['HTML', 'CSS', 'Javacript', 'Typescript'],
   },
   {
     name: 'Libraries/Frameworks',
-    content: 'React, Redux, Nextjs, Apollo Client, GatsbyJS',
+    content: [
+      'React',
+      'Redux',
+      'Nextjs',
+      'Apollo Client',
+      'GatsbyJS',
+      'Styled Components',
+      'Enzyme',
+    ],
   },
 ]
 
 const backendCategories = [
   {
     name: 'Servers',
-    content: 'Node, Express',
+    content: ['Node', 'Express'],
   },
   {
     name: 'Databases',
-    content: 'MongoDB, Mongoose, Postgres, SQL, Prisma',
+    content: [
+      'MongoDB',
+      'Mongoose',
+      'Postgres',
+      'MySQL',
+      'MS SQL Server',
+      'SQL',
+    ],
   },
   {
     name: 'Authentication',
-    content: 'Cookies, JWT, OAuth2',
+    content: ['Cookies', 'JWT', 'OAuth2', 'OpenId Connect'],
   },
   {
     name: 'APIs',
-    content: 'Rest, GraphQL',
+    content: ['REST', 'GraphQL'],
   },
 ]
 const otherCategories = [
   {
     name: 'Testing',
-    content: 'Jest, Enzyme, Percy (Visual Regression)',
+    content: ['Jest', 'Enzyme', 'Percy (Visual Regression)', 'Cypress (E2E)'],
   },
   {
-    name: 'Deployment',
-    content:
-      'AWS (S3, Elastic Beanstalk, Route53, CloudFront), Heroku, Netlify',
+    name: 'Cloud',
+    content: ['AWS', 'Azure Cloud Services'],
+  },
+  {
+    name: 'Containers',
+    content: ['Docker', 'Kubernetes', 'Azure Container Registry'],
   },
   {
     name: 'CI/CD',
-    content: 'CircleCi',
+    content: ['CircleCi', 'GitHub Actions', 'Azure Devops'],
   },
 ]
 

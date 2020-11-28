@@ -6,8 +6,8 @@ export const taskMasterProject = {
   description:
     'A fully-featured, full-stack todo app. Key features include:  Google OAuth login, custom projects, duedates, sortable and editable lists, pdf export functionality.',
   techStack: {
-    frontEnd: 'React, Redux',
-    backEnd: 'Node.js, Express, Oauth2, Mongodb (with Mongoose)',
+    frontEnd: ['React', 'Redux'],
+    backEnd: ['Node.js', 'Express', 'OAuth2', 'Mongodb'],
   },
   githubLinks: [
     {

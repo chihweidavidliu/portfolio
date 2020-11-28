@@ -6,7 +6,7 @@ export const speakifyProject = {
   description:
     'A personal text-to-speech project designed to help language educators with downloading pronunciations of words in a variety of languages.',
   techStack: {
-    frontEnd: 'HTML, CSS3, React, papaParse, soundOfText API',
+    frontEnd: ['HTML', 'CSS3', 'React', 'papaParse', 'soundOfText API'],
   },
   githubLinks: [],
   liveSiteLink: '/speakify',

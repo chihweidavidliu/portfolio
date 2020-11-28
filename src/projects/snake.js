@@ -6,7 +6,7 @@ export const snakeProject = {
   description:
     'A clone of the classic game. Features 4 difficulty levels and local storage high scores.',
   techStack: {
-    frontEnd: 'React, Typescript, Styled Components',
+    frontEnd: ['React', 'Typescript', 'Styled Components'],
   },
   githubLinks: [
     {

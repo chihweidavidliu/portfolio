@@ -6,7 +6,7 @@ export const meteorsProject = {
   description:
     'A game to help make learning more fun. Users input flash cards to be used as part of the game. Includes local storage saved lists and persisted learning stats',
   techStack: {
-    frontEnd: 'React, Typescript, Styled Components',
+    frontEnd: ['React', 'Typescript', 'Styled Components'],
   },
   githubLinks: [
     {

@@ -6,26 +6,38 @@ const Wrapper = styled.div`
   color: ${props => props.theme.fgBold};
   font-size: 17px;
   display: grid;
-  grid-template-columns: max-content 1fr;
-  grid-gap: 20px;
+  grid-gap: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgrey;
+  &:last-of-type {
+    border-bottom: none;
+  }
 `
 
-const ValueWrapper = styled.span`
-  text-align: right;
-  justify-self: right;
+const Subheading = styled.strong`
+  color: ${props => props.theme.accent1.bg};
+`
+const ValueWrapper = styled.div`
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  font-size: 16px;
 `
 
-const InformationRow = ({ title, value, children }) => (
+const InformationRow = ({ title, values }) => (
   <Wrapper>
-    <strong>{title}:</strong>
-    <ValueWrapper>{value || children}</ValueWrapper>
+    <Subheading>{title}</Subheading>
+    <ValueWrapper>
+      {values.map(value => (
+        <div key={value}>{value}</div>
+      ))}
+    </ValueWrapper>
   </Wrapper>
 )
 
 InformationRow.propTypes = {
   title: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  children: PropTypes.any,
+  values: PropTypes.array,
 }
 
 export default InformationRow
