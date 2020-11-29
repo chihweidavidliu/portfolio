@@ -121,21 +121,21 @@ const Introduction = () => (
       <StyledLink href="#TaskMaster">
         <StyledImage
           src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202957/portfolio/taskmaster/taskmaster-thumbnail_vamjxs.png"
-          alt="dashboard"
+          alt="Taskmaster App Dashboard"
         />
       </StyledLink>
 
       <StyledLink href="#MyInternship">
         <StyledImage
           src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202941/portfolio/myinternship/myinternship-thumbnail_nvtgiz.png"
-          alt="dashboard"
+          alt="MyInternship App Dashboard"
         />
       </StyledLink>
 
       <StyledLink href="#Lingualink">
         <StyledImage
           src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202924/portfolio/lingualink/lingualink-student-detail_mzbai1.png"
-          alt="dashboard"
+          alt="Lingualink App Dashboard"
         />
       </StyledLink>
     </IntroImageWrapper>
