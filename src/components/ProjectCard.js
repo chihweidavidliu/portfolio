@@ -134,9 +134,7 @@ const SubSection = styled.div`
   grid-gap: 15px;
 `
 
-const StyledImage = styled.img.attrs(props => ({
-  alt: props.alt,
-}))`
+const StyledImage = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
