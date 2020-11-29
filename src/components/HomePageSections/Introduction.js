@@ -21,6 +21,7 @@ const IntroductionSectionWrapper = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: #001827;
   background-image: url('https://images.unsplash.com/photo-1506259091721-347e791bab0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
   background-position: center;
   background-size: cover;

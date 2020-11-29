@@ -72,12 +72,14 @@ const Header = styled.div`
   font-size: 20px;
 `
 
-const ImageLinkWrapper = styled.a`
+const ImageLinkWrapper = styled.button`
   height: 300px;
   border-radius: 4px;
   display: inline-block;
   position: relative;
   text-align: center;
+  border: none;
+  padding: 0;
 
   &:before {
     transition: opacity 0.2s ease-in-out;
@@ -112,6 +114,7 @@ const ImageLinkWrapper = styled.a`
     text-decoration: none;
     top: 50%;
     white-space: nowrap;
+    cursor: pointer;
   }
 
   &:hover {
@@ -120,7 +123,7 @@ const ImageLinkWrapper = styled.a`
     }
 
     &:before {
-      background: url(${overlay}), url(${overlay});
+      content: url(${overlay}), url(${overlay}) / 'Gallery Image';
       opacity: 1;
     }
   }
@@ -131,7 +134,9 @@ const SubSection = styled.div`
   grid-gap: 15px;
 `
 
-const StyledImage = styled.img`
+const StyledImage = styled.img.attrs(props => ({
+  alt: props.alt,
+}))`
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -173,13 +178,12 @@ const ProjectCard = ({ project, toggleLightbox }) => {
           className="image fit thumb"
           href={mainImage.source}
           aria-label={`${project.title}-project-gallery`}
-          alt={mainImage.description}
           onClick={e => {
             e.preventDefault()
             toggleLightbox(project)
           }}
         >
-          <StyledImage src={mainImage.source} alt={mainImage.description} />
+          <StyledImage src={mainImage.source} alt={mainImage.caption} />
         </ImageLinkWrapper>
 
         <ProjectDetails>
