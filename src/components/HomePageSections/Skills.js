@@ -12,7 +12,7 @@ import Section from '../Section'
 const frontEndCategories = [
   {
     name: 'Fundamentals',
-    content: ['HTML', 'CSS', 'Javacript', 'Typescript'],
+    content: ['HTML', 'CSS', 'Javascript', 'Typescript'],
   },
   {
     name: 'Libraries/Frameworks',
