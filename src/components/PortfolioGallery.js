@@ -7,6 +7,7 @@ import ProjectCard from './ProjectCard'
 
 const StyledCardGrid = styled(CardGrid)`
   grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+  grid-auto-rows: minmax(300px, max-content);
 
   @media (max-width: 736px) {
     grid-template-columns: 1fr;
@@ -23,7 +24,7 @@ const PortfolioGallery = ({ projects }) => {
   }
 
   return (
-    <div>
+    <>
       <StyledCardGrid>
         {projects.map(project => (
           <ProjectCard
@@ -49,7 +50,7 @@ const PortfolioGallery = ({ projects }) => {
           </Modal>
         )}
       </ModalGateway>
-    </div>
+    </>
   )
 }
 

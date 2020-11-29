@@ -5,11 +5,27 @@ import InformationRow from './InfromationRow'
 import overlay from '../assets/images/overlay.png'
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   text-align: center;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  grid-gap: 20px;
 `
+
+const Card = styled.div`
+  background-color: white;
+  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  height: 100%;
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  transition: border 0.4s;
+  border: 1px solid transparent;
+  &:hover {
+    border: 1px solid ${props => props.theme.accent1.bg};
+  }
+`
+
 const ProjectDetails = styled.div`
   margin-top: 30px;
   display: flex;
@@ -22,27 +38,10 @@ const ProjectDetails = styled.div`
   }
 `
 
-const Card = styled.div`
-  background-color: white;
-  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  border-radius: 10px;
-  height: 100%;
-  @media (max-width: 1280px) {
-    flex-grow: 0;
-  }
-  display: grid;
-  grid-template-rows: min-content 1fr min-content;
-  transition: border 0.4s;
-  border: 1px solid transparent;
-  &:hover {
-    border: 1px solid ${props => props.theme.accent1.bg};
-  }
-`
-
 const H2 = styled.h2`
   color: ${props => props.theme.fgBold};
   font-size: 20px;
+  margin: 0;
 `
 
 const DetailBorder = styled.div`
@@ -167,10 +166,7 @@ const ProjectCard = ({ project, toggleLightbox }) => {
 
   return (
     <Wrapper id={project.title}>
-      <div>
-        <H2>{project.title}</H2>
-      </div>
-
+      <H2>{project.title}</H2>
       <Card>
         <ImageLinkWrapper
           className="image fit thumb"
