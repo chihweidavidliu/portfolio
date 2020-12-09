@@ -2,6 +2,7 @@ import React from 'react'
 import Proptypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { useInView } from 'react-intersection-observer'
+import { useMediaQuery } from 'react-responsive'
 import InformationRow from './InfromationRow'
 import overlay from '../assets/images/overlay.png'
 
@@ -175,10 +176,15 @@ const Link = styled.a`
 
 const ProjectCard = ({ project, toggleLightbox }) => {
   const mainImage = project.images[0]
+
+  const isMobile = useMediaQuery({
+    query: '(max-device-width: 400px)',
+  })
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0,
-    rootMargin: '0px 0px 120px 0px',
+    rootMargin: `0px 0px ${isMobile ? 400 : 120}px 0px`,
   })
 
   return (
