@@ -1,6 +1,7 @@
 import React from 'react'
 import Proptypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { useInView } from 'react-intersection-observer'
 import InformationRow from './InfromationRow'
 import overlay from '../assets/images/overlay.png'
 
@@ -9,6 +10,17 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-rows: min-content 1fr;
   grid-gap: 20px;
+
+  opacity: 0;
+  transform: translateY(50%);
+  transition: opacity 400ms ease-in, transform 400ms ease-in;
+
+  ${props =>
+    props.inView &&
+    css`
+      opacity: 1;
+      transform: translateY(0);
+    `}
 `
 
 const Card = styled.div`
@@ -19,8 +31,8 @@ const Card = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: max-content 1fr max-content;
-  transition: border 0.4s;
   border: 1px solid transparent;
+  transition: border 0.4s;
   &:hover {
     border: 1px solid ${props => props.theme.accent1.bg};
   }
@@ -163,9 +175,14 @@ const Link = styled.a`
 
 const ProjectCard = ({ project, toggleLightbox }) => {
   const mainImage = project.images[0]
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0,
+    rootMargin: '0px 0px 100px 0px',
+  })
 
   return (
-    <Wrapper id={project.title}>
+    <Wrapper id={project.title} ref={ref} inView={inView}>
       <H2>{project.title}</H2>
       <Card>
         <ImageLinkWrapper
@@ -236,8 +253,8 @@ export default ProjectCard
 // Prop types
 
 const techStack = Proptypes.shape({
-  frontEnd: Proptypes.string,
-  backEnd: Proptypes.string,
+  frontEnd: Proptypes.array,
+  backEnd: Proptypes.array,
 })
 
 const githubLink = Proptypes.shape({
