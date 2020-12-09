@@ -85,18 +85,19 @@ const getPosition = (fly, intersectionRatio) => {
     case 'left':
       return {
         transform: `translateX(-${weighting * 100}%) rotate(${weighting *
-          40}deg)`,
+          40}deg) scale(${intersectionRatio})`,
         opacity: intersectionRatio,
       }
     case 'right':
       return {
         transform: `translateX(${weighting * 100}%) rotate(-${weighting *
-          40}deg)`,
+          40}deg) scale(${intersectionRatio})`,
         opacity: intersectionRatio,
       }
     case 'top':
       return {
-        transform: `translateY(-${weighting * 100}%)`,
+        transform: `translateY(-${weighting *
+          100}%) scale(${intersectionRatio})`,
         opacity: intersectionRatio,
       }
     default:
@@ -171,6 +172,7 @@ const THRESHOLD = [
   0.8,
   0.85,
   0.9,
+  0.95,
   1,
 ] // Store multiple thresholds in a constant
 
