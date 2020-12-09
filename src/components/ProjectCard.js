@@ -178,7 +178,7 @@ const ProjectCard = ({ project, toggleLightbox }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0,
-    rootMargin: '0px 0px 100px 0px',
+    rootMargin: '0px 0px 120px 0px',
   })
 
   return (

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useInView } from 'react-intersection-observer'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import SocialMediaLinks from '../SocialMediaLinks'
 import SectionHeader from '../typography/SectionHeader'
@@ -77,11 +78,53 @@ const StyledImage = styled.img`
   }
 `
 
-const StyledLink = styled.a`
+const getPosition = (fly, intersectionRatio) => {
+  const weighting = 1 - intersectionRatio
+
+  switch (fly) {
+    case 'left':
+      return {
+        transform: `translateX(-${weighting * 100}%) rotate(${weighting *
+          40}deg)`,
+        opacity: intersectionRatio,
+      }
+    case 'right':
+      return {
+        transform: `translateX(${weighting * 100}%) rotate(-${weighting *
+          40}deg)`,
+        opacity: intersectionRatio,
+      }
+    case 'top':
+      return {
+        transform: `translateY(-${weighting * 100}%)`,
+        opacity: intersectionRatio,
+      }
+    default:
+      return {}
+  }
+}
+
+const StyledLink = styled.a.attrs(({ fly, intersectionRatio }) => ({
+  style: getPosition(fly, intersectionRatio),
+}))`
   cursor: default;
   text-decoration: none;
   &:hover {
     border-bottom: dotted 1px transparent;
+  }
+
+  transition: opacity 300ms, transform 300ms;
+
+  animation: fadeIn ${props => props.duration || 0.7}s ease-in;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 `
 
@@ -110,49 +153,88 @@ const ChevronLink = styled.a`
   }
 `
 
-const Introduction = () => (
-  <IntroductionSectionWrapper>
-    <div>
-      <Welcome>Hi, I'm David,</Welcome>
-    </div>
+const THRESHOLD = [
+  0.1,
+  0.15,
+  0.2,
+  0.25,
+  0.3,
+  0.35,
+  0.4,
+  0.45,
+  0.5,
+  0.55,
+  0.6,
+  0.65,
+  0.7,
+  0.75,
+  0.8,
+  0.85,
+  0.9,
+  1,
+] // Store multiple thresholds in a constant
 
-    <P>a full-stack web developer based in London</P>
+const Introduction = () => {
+  const { ref, entry } = useInView({ threshold: THRESHOLD })
 
-    <IntroImageWrapper>
-      <StyledLink href="#TaskMaster">
-        <StyledImage
-          src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202957/portfolio/taskmaster/taskmaster-thumbnail_vamjxs.png"
-          alt="Taskmaster App Dashboard"
+  const intersectionRatio = entry ? entry.intersectionRatio : 1
+
+  return (
+    <IntroductionSectionWrapper ref={ref}>
+      <div>
+        <Welcome>Hi, I'm David,</Welcome>
+      </div>
+
+      <P>a full-stack web developer based in London</P>
+
+      <IntroImageWrapper>
+        <StyledLink
+          href="#TaskMaster"
+          fly="left"
+          intersectionRatio={intersectionRatio}
+        >
+          <StyledImage
+            src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202957/portfolio/taskmaster/taskmaster-thumbnail_vamjxs.png"
+            alt="Taskmaster App Dashboard"
+          />
+        </StyledLink>
+
+        <StyledLink
+          href="#MyInternship"
+          fly="top"
+          intersectionRatio={intersectionRatio}
+        >
+          <StyledImage
+            src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202941/portfolio/myinternship/myinternship-thumbnail_nvtgiz.png"
+            alt="MyInternship App Dashboard"
+          />
+        </StyledLink>
+
+        <StyledLink
+          href="#Lingualink"
+          fly="right"
+          intersectionRatio={intersectionRatio}
+        >
+          <StyledImage
+            src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202924/portfolio/lingualink/lingualink-student-detail_mzbai1.png"
+            alt="Lingualink App Dashboard"
+          />
+        </StyledLink>
+      </IntroImageWrapper>
+
+      <LinksWrapper>
+        <SocialMediaLinks
+          iconColor="#a2a2a2"
+          fontSize="20px"
+          display={['github', 'linkedin']}
         />
-      </StyledLink>
+      </LinksWrapper>
 
-      <StyledLink href="#MyInternship">
-        <StyledImage
-          src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202941/portfolio/myinternship/myinternship-thumbnail_nvtgiz.png"
-          alt="MyInternship App Dashboard"
-        />
-      </StyledLink>
-
-      <StyledLink href="#Lingualink">
-        <StyledImage
-          src="https://res.cloudinary.com/dhccfu1un/image/upload/v1584202924/portfolio/lingualink/lingualink-student-detail_mzbai1.png"
-          alt="Lingualink App Dashboard"
-        />
-      </StyledLink>
-    </IntroImageWrapper>
-
-    <LinksWrapper>
-      <SocialMediaLinks
-        iconColor="#a2a2a2"
-        fontSize="20px"
-        display={['github', 'linkedin']}
-      />
-    </LinksWrapper>
-
-    <ChevronLink href="#about" aria-label="navigate-to-next-section">
-      <FontAwesomeIcon icon={faChevronDown} size="2x" color="grey" />
-    </ChevronLink>
-  </IntroductionSectionWrapper>
-)
+      <ChevronLink href="#about" aria-label="navigate-to-next-section">
+        <FontAwesomeIcon icon={faChevronDown} size="2x" color="grey" />
+      </ChevronLink>
+    </IntroductionSectionWrapper>
+  )
+}
 
 export default Introduction
