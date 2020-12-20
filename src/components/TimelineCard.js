@@ -128,7 +128,7 @@ const TimelineCard = ({
 
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: isDesktop ? 0.5 : 0,
+    threshold: isDesktop ? 0.7 : 0,
     rootMargin: `0px 0px ${isDesktop ? 0 : 100}px 0px`,
   })
 
