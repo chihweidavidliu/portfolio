@@ -36,7 +36,7 @@ export const timelineContents = {
     *Key technologies used: Typescript, React, styled-components, Nodejs, PostgreSQL, AWS*`,
   },
   bearjs: {
-    title: 'Web Developer (Intern)',
+    title: 'Web Developer',
     organisation: 'BearJs',
     location: 'Remote',
     startDate: new Date(2019, 0, 1),
