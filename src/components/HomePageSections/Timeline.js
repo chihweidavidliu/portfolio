@@ -58,13 +58,13 @@ const Timeline = () => {
               <TimelineCard
                 horizontalAlignment="right"
                 verticalOffset="180px"
-                branchHeights={{ top: 120, bottom: 120 }}
+                branchHeights={{ top: 118, bottom: 125 }}
                 {...timelineContents.defty}
               />
               <TimelineCard
                 horizontalAlignment="left"
                 verticalOffset="0px"
-                branchHeights={{ top: 60, bottom: 60 }}
+                branchHeights={{ top: 60, bottom: 65 }}
                 {...timelineContents.bearjs}
               />
             </TimelinePoint>
