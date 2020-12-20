@@ -6,14 +6,11 @@ import Section from '../Section'
 import TimelineCard from '../TimelineCard'
 import { timelineContents } from '../../timeline'
 
-const TimelineGrid = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+const PointWrapper = styled.div`
   position: relative;
 `
 
-const PointWrapper = styled.div`
+const OuterPoint = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -24,8 +21,8 @@ const PointWrapper = styled.div`
   align-items: center;
   position: relative;
   box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
+  cursor: default;
   transition: transform 0.1s ease-in;
-  position: relative;
   &:hover {
     transform: scale(1.1);
   }
@@ -62,7 +59,7 @@ const DateLineWrapper = styled.div`
 const LineSection = styled.div`
   position: relative;
   width: 4px;
-  height: ${props => props.height || '300px'};
+  height: ${props => props.height || '400px'};
   background: ${props => props.theme.accent1.bg};
   margin: 5px 0px;
   border-radius: 2px;
@@ -71,8 +68,10 @@ const LineSection = styled.div`
 
 const Point = ({ date, children }) => (
   <PointWrapper>
-    <InnerPoint />
-    <DateLabel>{date}</DateLabel>
+    <OuterPoint>
+      <InnerPoint />
+      <DateLabel>{date}</DateLabel>
+    </OuterPoint>
     {children}
   </PointWrapper>
 )
@@ -90,10 +89,12 @@ const DateLine = ({ children }) => (
     <LineSection />
     <Point date="2018" />
     <LineSection />
-    <Point date="2017" />
+    <Point date="2017">
+      <TimelineCard horizontalAlignment="left" verticalOffset="100px" {...timelineContents.ens} />
+    </Point>
     <LineSection />
     <Point date="2016">
-      <TimelineCard horizontalAlignment="right" verticalOffset="0px" {...timelineContents.mcs} />
+      <TimelineCard horizontalAlignment="right" verticalOffset="10px" {...timelineContents.mcs} />
     </Point>
     <LineSection height="70px" />
     <Point date="2015">
