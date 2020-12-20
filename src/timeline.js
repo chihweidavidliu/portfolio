@@ -8,7 +8,7 @@ export const timelineContents = {
     organisation: 'Satoshi Systems Ltd',
     location: 'London',
     startDate: new Date(2020, 5, 1),
-    endDate: new Date(2020, 11, 28), // MONTH IS 0 INDEXED
+    endDate: new Date(2020, 11, 31), // MONTH IS 0 INDEXED
     description: dedent`Lead developer on several Progressive Web App projects  
   
         * Designing and implementing micro-service architectures hosted in Azure Kubernetes clusters
@@ -25,7 +25,7 @@ export const timelineContents = {
     organisation: 'Defty',
     location: 'London',
     startDate: new Date(2019, 6, 1),
-    endDate: new Date(2020, 6, 1),
+    endDate: new Date(2020, 5, 30),
     description: dedent`Worked on a range of microservices for the company’s flagship website builder:
     * Contributed extensively to the shared components library
     * Created a custom form builder + form microservice
@@ -83,7 +83,7 @@ export const timelineContents = {
     organisation: 'Magdalen College School',
     location: 'Oxford',
     startDate: new Date(2016, 8, 1),
-    endDate: new Date(2017, 7, 1),
+    endDate: new Date(2017, 7, 31),
     description: dedent`Taught iGCSE and A level French at one of the UK's leading private schools.  
     * Taught extension classes on French Literature and Philosophy.  
     * Responsible for preparing MFL Oxbridge candidates for exams/interviews.  
@@ -97,7 +97,7 @@ export const timelineContents = {
     organisation: 'University of Oxford',
     location: 'Oxford',
     startDate: new Date(2015, 8, 1),
-    endDate: new Date(2016, 7, 1),
+    endDate: new Date(2016, 7, 30),
     description: dedent`Grade: Distinction`,
   },
   ba: {
@@ -107,7 +107,7 @@ export const timelineContents = {
     organisation: 'University of Oxford',
     location: 'Oxford',
     startDate: new Date(2011, 8, 1),
-    endDate: new Date(2015, 7, 1),
+    endDate: new Date(2015, 7, 30),
     description: dedent`Grade: Congratulatory First Class Honours
     * Highest overall mark in the university for French
     * Distinction in Spoken French

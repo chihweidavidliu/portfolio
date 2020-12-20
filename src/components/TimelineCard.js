@@ -3,6 +3,7 @@ import format from 'date-fns/format'
 import styled, { css } from 'styled-components'
 import Proptypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
+import differenceInCalendarDays from 'date-fns/differenceInCalendarDays'
 import gfm from 'remark-gfm'
 import { useInView } from 'react-intersection-observer'
 import { Card } from './Card'
@@ -111,6 +112,24 @@ const TimelineCard = ({
     threshold: 0.5,
   })
 
+  const renderDuration = () => {
+    const days = differenceInCalendarDays(endDate, startDate)
+    const months = Math.round(days / 30.41)
+    const years = Math.floor(months / 12)
+    const remainingMonths = months % 12
+
+    let duration = ''
+    if (years > 0) {
+      duration += `${years} year${years === 1 ? '' : 's'}`
+    }
+
+    if (remainingMonths) {
+      duration += ` ${years > 0 ? remainingMonths : months} months`
+    }
+
+    return duration.trim()
+  }
+
   return (
     <TimelinCardWrapper
       horizontalAlignment={horizontalAlignment}
@@ -125,7 +144,8 @@ const TimelineCard = ({
             {organisation ? `${organisation}, ` : ''} {location}
           </Organisation>
           <Date>
-            {format(startDate, 'MMMM yyyy')} - {format(endDate, 'MMMM yyyy')}
+            {format(startDate, 'MMMM yyyy')} - {format(endDate, 'MMMM yyyy')} (
+            {renderDuration()})
           </Date>
         </HeaderInfo>
         {logoUrl && <Logo src={logoUrl} alt={`${organisation}-logo`} />}
