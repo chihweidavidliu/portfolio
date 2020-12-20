@@ -2,6 +2,7 @@ import React from 'react'
 import format from 'date-fns/format'
 import styled, { css } from 'styled-components'
 import Proptypes from 'prop-types'
+import { useMediaQuery } from 'react-responsive'
 import ReactMarkdown from 'react-markdown'
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays'
 import gfm from 'remark-gfm'
@@ -9,44 +10,55 @@ import { useInView } from 'react-intersection-observer'
 import { Card } from './Card'
 
 const TimelinCardWrapper = styled(Card)`
-  position: absolute;
-  width: 400px;
+  width: 100%;
   height: initial;
-  bottom: ${props => props.bottom};
-  ${props => {
-    switch (props.horizontalAlignment) {
-      case 'left':
-        return css`
-          right: 130px;
-        `
-      case 'right':
-        return css`
-          left: 160px;
-        `
-      default:
-        break
-    }
-  }};
-
   opacity: 0;
-  transform: ${props => {
-    switch (props.horizontalAlignment) {
-      case 'left':
-        return `translateX(-50%)`
-      case 'right':
-        return `translateX(50%)`
-      default:
-        break
-    }
-  }};
   transition: opacity 400ms ease-in, transform 400ms ease-in;
-
+  transform: translateY(50%);
   ${props =>
     props.inView &&
     css`
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     `}
+
+  @media (min-width: 1120px) {
+    position: absolute;
+    width: 400px;
+    bottom: ${props => props.bottom};
+    ${props => {
+      switch (props.horizontalAlignment) {
+        case 'left':
+          return css`
+            right: 130px;
+          `
+        case 'right':
+          return css`
+            left: 160px;
+          `
+        default:
+          break
+      }
+    }};
+
+    transform: ${props => {
+      switch (props.horizontalAlignment) {
+        case 'left':
+          return `translateX(-50%)`
+        case 'right':
+          return `translateX(50%)`
+        default:
+          break
+      }
+    }};
+
+    ${props =>
+      props.inView &&
+      css`
+        opacity: 1;
+        transform: translateX(0);
+      `}
+  }
 `
 
 export const HeaderWrapper = styled.div`
@@ -86,7 +98,7 @@ export const Date = styled.div`
 
 const Description = styled.div`
   max-width: 100%;
-  font-size: 14px;
+  font-size: 16px;
   strong {
     color: ${props => props.theme.accent1.bg};
   }
@@ -107,9 +119,14 @@ const TimelineCard = ({
   verticalOffset,
   logoUrl,
 }) => {
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 1120px)',
+  })
+
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: isDesktop ? 0.5 : 0,
+    rootMargin: `0px 0px ${isDesktop ? 0 : 100}px 0px`,
   })
 
   const renderDuration = () => {
