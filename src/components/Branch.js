@@ -63,9 +63,9 @@ const Branch = ({
             isHovered={isHovered}
             d={`
         M 0,50
-        Q 70,50, 70,35
-        T 70, ${50 - heights.top + HEIGHT_OFFSET}
-        Q 70,${50 - heights.top}, 85,${50 - heights.top}
+        Q 65,50, 65,35
+        T 65, ${50 - heights.top + HEIGHT_OFFSET}
+        Q 65,${50 - heights.top}, 80,${50 - heights.top}
       `}
           />
 
@@ -73,9 +73,9 @@ const Branch = ({
             isHovered={isHovered}
             d={`
         M 0,50
-        Q 70,50, 70,65
-        T 70, ${50 + heights.bottom - HEIGHT_OFFSET}
-        Q 70,${50 + heights.bottom}, 85,${50 + heights.bottom}
+        Q 65,50, 65,65
+        T 65, ${50 + heights.bottom - HEIGHT_OFFSET}
+        Q 65,${50 + heights.bottom}, 80,${50 + heights.bottom}
       `}
           />
         </g>
@@ -89,9 +89,9 @@ const Branch = ({
           isHovered={isHovered}
           d={`
       M 100,50
-      Q 30,50, 30,35
-      T 30, ${50 - heights.top + HEIGHT_OFFSET}
-      Q 30,${50 - heights.top}, 15,${50 - heights.top}
+      Q 35,50, 35,35
+      T 35, ${50 - heights.top + HEIGHT_OFFSET}
+      Q 35,${50 - heights.top}, 20,${50 - heights.top}
     `}
         />
 
@@ -99,9 +99,9 @@ const Branch = ({
           isHovered={isHovered}
           d={`
       M 100,50
-      Q 30,50, 30,65
-      T 30, ${50 + heights.bottom - HEIGHT_OFFSET}
-      Q 30,${50 + heights.bottom}, 15,${50 + heights.bottom}
+      Q 35,50, 35,65
+      T 35, ${50 + heights.bottom - HEIGHT_OFFSET}
+      Q 35,${50 + heights.bottom}, 20,${50 + heights.bottom}
     `}
         />
       </g>

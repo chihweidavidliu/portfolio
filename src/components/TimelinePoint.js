@@ -4,51 +4,52 @@ import Proptypes from 'prop-types'
 
 const PointWrapper = styled.div`
   position: relative;
-`
-
-const OuterPoint = styled.div`
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 3px solid ${props => props.theme.accent1.bg};
-  background: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
-  cursor: default;
-  transition: transform 0.1s ease-in;
-  &:hover {
-    transform: scale(1.1);
-  }
+  flex-direction: column;
 `
 
-const InnerPoint = styled.div`
+const OuterPoint = styled.div`
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: ${props => props.theme.accent1.bg};
+  background: none;
+  border: 2px solid ${props => props.theme.accent1.bg};
   box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
   opacity: 0.9;
+  margin-top: 3px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`
+
+const InnerPoint = styled.div`
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: ${props => props.theme.accent1.bg};
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
 `
 
 const DateLabel = styled.div`
   color: ${props => props.theme.fgBold};
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
   margin: 0;
-  position: absolute;
-  left: 35px;
+  padding: 0;
   text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
 `
 
 const TimelinePoint = ({ date, children }) => (
   <PointWrapper>
+    <DateLabel>{date}</DateLabel>
     <OuterPoint>
       <InnerPoint />
-      <DateLabel>{date}</DateLabel>
     </OuterPoint>
+
     {children}
   </PointWrapper>
 )
