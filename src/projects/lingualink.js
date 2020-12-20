@@ -6,8 +6,15 @@ export const lingualinkProject = {
   description:
     'A digital classroom connecting language teachers and students. Key features include class and homework creation, detailed student progress monitoring, and analysis of areas for improvement. Includes premium subscription option.',
   techStack: {
-    frontEnd: ['React', 'Next.js', 'GraphQL', 'Stripe'],
-    backEnd: ['Node.js', 'Apollo-Server', 'Mongodb', 'Mongoose'],
+    frontEnd: ['React', 'Next.js', 'Apollo Client', 'Stripe Checkout'],
+    backEnd: [
+      'Node.js',
+      'Stripe',
+      'GraphQL',
+      'Apollo Server',
+      'Mongodb',
+      'Mongoose',
+    ],
   },
   githubLinks: [],
   liveSiteLink: 'https://lingualink.uk/',
