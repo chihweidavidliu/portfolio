@@ -72,8 +72,8 @@ const Timeline = () => {
             <TimelinePoint date="2018">
               <TimelineCard
                 horizontalAlignment="right"
-                verticalOffset="0px"
-                branchHeights={{ top: 95, bottom: 30 }}
+                verticalOffset="30px"
+                branchHeights={{ top: 78, bottom: 35 }}
                 {...timelineContents.freelance}
               />
             </TimelinePoint>
