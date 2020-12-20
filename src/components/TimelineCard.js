@@ -33,18 +33,22 @@ export const HeaderWrapper = styled.div`
 `
 
 export const Title = styled.h2`
+  font-weight: bold;
   margin: 0;
+  padding: 0;
   font-size: 22px;
+  color: ${props => props.theme.accent1.bg};
+`
+
+const Organisation = styled.div`
+  font-size: 20px;
   font-weight: 300;
-  strong {
-    color: ${props => props.theme.accent1.bg};
-    opacity: 0.9;
-  }
+  color: ${props => props.theme.fgBold};
 `
 
 export const Date = styled.div`
   font-size: 13px;
-  font-weight: 200;
+  font-weight: 300;
   text-transform: uppercase;
 `
 
@@ -70,11 +74,15 @@ const TimelineCard = ({
   horizontalAlignment,
   verticalOffset,
 }) => (
-  <TimelinCardWrapper horizontalAlignment={horizontalAlignment} bottom={verticalOffset}>
+  <TimelinCardWrapper
+    horizontalAlignment={horizontalAlignment}
+    bottom={verticalOffset}
+  >
     <HeaderWrapper>
-      <Title>
-        <strong>{organisation}</strong>, {location} - {title}
-      </Title>
+      <Title>{title}</Title>
+      <Organisation>
+        {organisation ? `${organisation}, ` : ''} {location}
+      </Organisation>
       <Date>
         {format(startDate, 'MMMM yyyy')} - {format(endDate, 'MMMM yyyy')}
       </Date>

@@ -5,8 +5,8 @@ export const timelineContents = {
     title: 'Full Stack Engineer',
     organisation: 'Satoshi Systems Ltd',
     location: 'London',
-    startDate: new Date(2020, 6, 1),
-    endDate: new Date(2020, 12, 28),
+    startDate: new Date(2020, 5, 1),
+    endDate: new Date(2020, 11, 28), // MONTH IS 0 INDEXED
     description: dedent`Lead developer on several Progressive Web App projects  
   
         * Designing and implementing micro-service architectures hosted in Azure Kubernetes clusters
@@ -20,7 +20,7 @@ export const timelineContents = {
     title: 'Full Stack Engineer',
     organisation: 'Defty',
     location: 'London',
-    startDate: new Date(2019, 7, 1),
+    startDate: new Date(2019, 6, 1),
     endDate: new Date(2020, 6, 1),
     description: dedent`Worked on a range of microservices for the company’s flagship website builder:
     * Contributed extensively to the shared components library
@@ -35,38 +35,47 @@ export const timelineContents = {
     title: 'Web Developer (Intern)',
     organisation: 'BearJs',
     location: 'Remote',
-    startDate: new Date(2019, 1, 1),
-    endDate: new Date(2019, 6, 1),
+    startDate: new Date(2019, 0, 1),
+    endDate: new Date(2019, 5, 1),
     description: dedent`Developed a frontend UI for interacting with spreadsheets in Bridging Software for HMRC’s Making Tax Digital API
 
     *Key technologies used: React, Nextjs, Nodejs, GraphQl*`,
   },
-  ens: {
-    title: 'English Lecturer/Freelance Web Developer',
-    organisation: 'École Normale Supérieure',
+  freelance: {
+    title: 'Freelance Web Developer',
+    organisation: '',
     location: 'Lyon',
-    startDate: new Date(2017, 9, 1),
-    endDate: new Date(2019, 6, 1),
-    description: dedent`Lectured undergraduate and postgraduate students in English language and culture.
+    startDate: new Date(2018, 8, 1),
+    endDate: new Date(2018, 11, 1),
+    description: dedent`Worked on several freelance projects.
     
-    Created several tools for the Department of Languages including:
-    * A web app to manage student course selections and identify aberrant choices
-    * A tool to automatically synthesize and download pronunciations for vocabulary lists to assist with teaching. 
+    **Ecole Normale Supérieure, Lyon, France**  
+    * Created a web app to manage student course selections and identify aberrant choices
+    * Created a tool to automatically synthesize and download pronunciations for vocabulary lists to assist with teaching. 
     
     *Key technologies used: React, Redux, JQuery*
-    
-    Worked on projects for other clients during this time, such as **Jinwen University, Taipei, Taiwan**
+
+    **Jinwen University, Taipei, Taiwan**  
     * Created a full-stack internship platform allowing university staff to publish internship opportunities, upload interview outcomes and calculate final internship placements
     * Wrote a sorting algorithm to match student preferences to company shortlists
     
     *Key technologies used: React, Redux, Nodejs, Mongoose, MongoDb*`,
   },
+  ens: {
+    title: 'English Lecturer',
+    organisation: 'École Normale Supérieure',
+    location: 'Lyon',
+    startDate: new Date(2017, 9, 1),
+    endDate: new Date(2019, 5, 1),
+    description: dedent`Lectured undergraduate and postgraduate students in English language and culture.
+    `,
+  },
   mcs: {
     title: 'French Teacher',
-    organisation: 'Magdalen College school',
+    organisation: 'Magdalen College School',
     location: 'Oxford',
-    startDate: new Date(2016, 9, 1),
-    endDate: new Date(2017, 8, 1),
+    startDate: new Date(2016, 8, 1),
+    endDate: new Date(2017, 7, 1),
     description: dedent`Taught iGCSE and A level French at one of the UK's leading private schools.  
     * Taught extension classes on French Literature and Philosophy.  
     * Responsible for preparing MFL Oxbridge candidates for exams/interviews.  
@@ -77,16 +86,16 @@ export const timelineContents = {
     title: 'MSt French Literature',
     organisation: 'University of Oxford',
     location: 'Oxford',
-    startDate: new Date(2015, 9, 1),
-    endDate: new Date(2016, 8, 1),
+    startDate: new Date(2015, 8, 1),
+    endDate: new Date(2016, 7, 1),
     description: dedent`Grade: Distinction`,
   },
   ba: {
     title: 'BA Modern Languages',
     organisation: 'University of Oxford',
     location: 'Oxford',
-    startDate: new Date(2011, 9, 1),
-    endDate: new Date(2015, 8, 1),
+    startDate: new Date(2011, 8, 1),
+    endDate: new Date(2015, 7, 1),
     description: dedent`Grade: Congratulatory First Class Honours
     * Highest overall mark in the university for French
     * Distinction in Spoken French

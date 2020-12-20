@@ -78,27 +78,65 @@ const Point = ({ date, children }) => (
 
 Point.propTypes = {
   date: Proptypes.string.isRequired,
+  children: Proptypes.any,
 }
 
 const DateLine = ({ children }) => (
   <DateLineWrapper>
     {children}
-    <Point date="2020" />
+    <Point date="2021"></Point>
     <LineSection />
-    <Point date="2019" />
+    <Point date="2020">
+      <TimelineCard
+        horizontalAlignment="left"
+        verticalOffset="150px"
+        {...timelineContents.satoshi}
+      />
+    </Point>
     <LineSection />
-    <Point date="2018" />
+    <Point date="2019">
+      <TimelineCard
+        horizontalAlignment="right"
+        verticalOffset="220px"
+        {...timelineContents.defty}
+      />
+      <TimelineCard
+        horizontalAlignment="left"
+        verticalOffset="0px"
+        {...timelineContents.bearjs}
+      />
+    </Point>
+    <LineSection />
+    <Point date="2018">
+      <TimelineCard
+        horizontalAlignment="right"
+        verticalOffset="-50px"
+        {...timelineContents.freelance}
+      />
+    </Point>
     <LineSection />
     <Point date="2017">
-      <TimelineCard horizontalAlignment="left" verticalOffset="100px" {...timelineContents.ens} />
+      <TimelineCard
+        horizontalAlignment="left"
+        verticalOffset="200px"
+        {...timelineContents.ens}
+      />
     </Point>
     <LineSection />
     <Point date="2016">
-      <TimelineCard horizontalAlignment="right" verticalOffset="10px" {...timelineContents.mcs} />
+      <TimelineCard
+        horizontalAlignment="right"
+        verticalOffset="250px"
+        {...timelineContents.mcs}
+      />
     </Point>
     <LineSection height="70px" />
     <Point date="2015">
-      <TimelineCard horizontalAlignment="left" verticalOffset="-20px" {...timelineContents.mst} />
+      <TimelineCard
+        horizontalAlignment="left"
+        verticalOffset="70px"
+        {...timelineContents.mst}
+      />
     </Point>
     <LineSection height="70px" />
     <Point date="2014" />
@@ -108,7 +146,11 @@ const DateLine = ({ children }) => (
     <Point date="2012" />
     <LineSection height="70px" />
     <Point date="2011">
-      <TimelineCard horizontalAlignment="right" verticalOffset="70px" {...timelineContents.ba} />
+      <TimelineCard
+        horizontalAlignment="right"
+        verticalOffset="120px"
+        {...timelineContents.ba}
+      />
     </Point>
   </DateLineWrapper>
 )
