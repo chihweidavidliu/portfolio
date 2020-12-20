@@ -30,7 +30,7 @@ const TimelinCardWrapper = styled(Card)`
       switch (props.horizontalAlignment) {
         case 'left':
           return css`
-            right: 130px;
+            right: 160px;
           `
         case 'right':
           return css`
