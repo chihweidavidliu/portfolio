@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import format from 'date-fns/format'
 import styled, { css } from 'styled-components'
 import Proptypes from 'prop-types'
@@ -8,12 +8,13 @@ import differenceInCalendarDays from 'date-fns/differenceInCalendarDays'
 import gfm from 'remark-gfm'
 import { useInView } from 'react-intersection-observer'
 import { Card } from './Card'
+import Branch, { HEIGHTS } from './Branch'
 
 const TimelinCardWrapper = styled(Card)`
   width: 100%;
   height: initial;
   opacity: 0;
-  transition: opacity 400ms ease-in, transform 400ms ease-in;
+  transition: all 400ms ease-in;
   transform: translateY(50%);
   ${props =>
     props.inView &&
@@ -118,7 +119,9 @@ const TimelineCard = ({
   horizontalAlignment,
   verticalOffset,
   logoUrl,
+  branchHeights,
 }) => {
+  const [isHovered, setIsHovered] = useState(false)
   const isDesktop = useMediaQuery({
     query: '(min-width: 1120px)',
   })
@@ -153,7 +156,14 @@ const TimelineCard = ({
       bottom={verticalOffset}
       ref={ref}
       inView={inView}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
+      <Branch
+        horizontalAlignment={horizontalAlignment}
+        heights={branchHeights}
+        isHovered={isHovered}
+      />
       <HeaderWrapper>
         <HeaderInfo>
           <div>
@@ -187,6 +197,7 @@ TimelineCard.propTypes = {
   endDate: Proptypes.instanceOf(Date),
   description: Proptypes.string.isRequired,
   logoUrl: Proptypes.string,
+  branchHeights: Proptypes.shape(HEIGHTS).isRequired,
 }
 
 export default TimelineCard

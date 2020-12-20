@@ -71,7 +71,7 @@ export const timelineContents = {
       'https://media-exp1.licdn.com/dms/image/C560BAQERXPYjiI_hIg/company-logo_100_100/0/1519856616115?e=1616630400&v=beta&t=5i9jjY6IUw07RWm-orVIELoJneESCWA8TgI0EhR1zuc',
     organisation: 'École Normale Supérieure',
     location: 'Lyon',
-    startDate: new Date(2017, 9, 1),
+    startDate: new Date(2017, 8, 1),
     endDate: new Date(2019, 5, 1),
     description: dedent`Lectured undergraduate and postgraduate students in English language and culture.
     `,
