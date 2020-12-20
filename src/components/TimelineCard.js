@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components'
 import Proptypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import gfm from 'remark-gfm'
+import { useInView } from 'react-intersection-observer'
 import { Card } from './Card'
 
 const TimelinCardWrapper = styled(Card)`
@@ -25,6 +26,26 @@ const TimelinCardWrapper = styled(Card)`
         break
     }
   }};
+
+  opacity: 0;
+  transform: ${props => {
+    switch (props.horizontalAlignment) {
+      case 'left':
+        return `translateX(-50%)`
+      case 'right':
+        return `translateX(50%)`
+      default:
+        break
+    }
+  }};
+  transition: opacity 400ms ease-in, transform 400ms ease-in;
+
+  ${props =>
+    props.inView &&
+    css`
+      opacity: 1;
+      transform: translateX(0);
+    `}
 `
 
 export const HeaderWrapper = styled.div`
@@ -84,29 +105,38 @@ const TimelineCard = ({
   horizontalAlignment,
   verticalOffset,
   logoUrl,
-}) => (
-  <TimelinCardWrapper
-    horizontalAlignment={horizontalAlignment}
-    bottom={verticalOffset}
-  >
-    <HeaderWrapper>
-      <HeaderInfo>
-        <Title>{title}</Title>
-        <Organisation>
-          {organisation ? `${organisation}, ` : ''} {location}
-        </Organisation>
-        <Date>
-          {format(startDate, 'MMMM yyyy')} - {format(endDate, 'MMMM yyyy')}
-        </Date>
-      </HeaderInfo>
-      {logoUrl && <Logo src={logoUrl} alt={`${organisation}-logo`} />}
-    </HeaderWrapper>
+}) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  })
 
-    <Description>
-      <ReactMarkdown plugins={[gfm]}>{description}</ReactMarkdown>
-    </Description>
-  </TimelinCardWrapper>
-)
+  return (
+    <TimelinCardWrapper
+      horizontalAlignment={horizontalAlignment}
+      bottom={verticalOffset}
+      ref={ref}
+      inView={inView}
+    >
+      <HeaderWrapper>
+        <HeaderInfo>
+          <Title>{title}</Title>
+          <Organisation>
+            {organisation ? `${organisation}, ` : ''} {location}
+          </Organisation>
+          <Date>
+            {format(startDate, 'MMMM yyyy')} - {format(endDate, 'MMMM yyyy')}
+          </Date>
+        </HeaderInfo>
+        {logoUrl && <Logo src={logoUrl} alt={`${organisation}-logo`} />}
+      </HeaderWrapper>
+
+      <Description>
+        <ReactMarkdown plugins={[gfm]}>{description}</ReactMarkdown>
+      </Description>
+    </TimelinCardWrapper>
+  )
+}
 
 TimelineCard.propTypes = {
   horizontalAlignment: Proptypes.oneOf(['left', 'right']).isRequired,

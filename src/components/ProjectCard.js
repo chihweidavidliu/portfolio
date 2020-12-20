@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 
   opacity: 0;
   transform: translateY(50%);
-  transition: opacity 400ms ease-in, transform 400ms ease-in;
+  transition: opacity 300ms ease-in, transform 400ms ease-in;
 
   ${props =>
     props.inView &&
@@ -170,7 +170,7 @@ const ProjectCard = ({ project, toggleLightbox }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0,
-    rootMargin: `0px 0px ${isMobile ? 400 : 120}px 0px`,
+    rootMargin: `0px 0px ${isMobile ? 400 : 150}px 0px`,
   })
 
   return (
