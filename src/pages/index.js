@@ -8,6 +8,7 @@ import Skills from '../components/HomePageSections/Skills'
 import Introduction from '../components/HomePageSections/Introduction'
 import About from '../components/HomePageSections/About'
 import Layout from '../components/layout'
+import Timeline from '../components/HomePageSections/Timeline'
 
 const AppWrapper = styled.main`
   width: 100vw;
@@ -42,6 +43,8 @@ class HomeIndex extends React.Component {
           <Skills />
           <Divider />
           <Portfolio />
+          <Divider />
+          <Timeline />
           <Divider />
           <ContactForm />
         </AppWrapper>

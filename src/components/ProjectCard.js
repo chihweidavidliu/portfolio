@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer'
 import { useMediaQuery } from 'react-responsive'
 import InformationRow from './InfromationRow'
 import overlay from '../assets/images/overlay.png'
+import { Card } from './Card'
 
 const Wrapper = styled.div`
   text-align: center;
@@ -14,7 +15,7 @@ const Wrapper = styled.div`
 
   opacity: 0;
   transform: translateY(50%);
-  transition: opacity 400ms ease-in, transform 400ms ease-in;
+  transition: opacity 300ms ease-in, transform 400ms ease-in;
 
   ${props =>
     props.inView &&
@@ -22,21 +23,6 @@ const Wrapper = styled.div`
       opacity: 1;
       transform: translateY(0);
     `}
-`
-
-const Card = styled.div`
-  background-color: white;
-  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  border-radius: 10px;
-  height: 100%;
-  display: grid;
-  grid-template-rows: max-content 1fr max-content;
-  border: 1px solid transparent;
-  transition: border 0.4s;
-  &:hover {
-    border: 1px solid ${props => props.theme.accent1.bg};
-  }
 `
 
 const ProjectDetails = styled.div`
@@ -184,7 +170,7 @@ const ProjectCard = ({ project, toggleLightbox }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0,
-    rootMargin: `0px 0px ${isMobile ? 400 : 120}px 0px`,
+    rootMargin: `0px 0px ${isMobile ? 400 : 150}px 0px`,
   })
 
   return (
