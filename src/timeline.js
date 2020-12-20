@@ -61,4 +61,35 @@ export const timelineContents = {
     
     *Key technologies used: React, Redux, Nodejs, Mongoose, MongoDb*`,
   },
+  mcs: {
+    title: 'French Teacher',
+    organisation: 'Magdalen College school',
+    location: 'Oxford',
+    startDate: new Date(2016, 9, 1),
+    endDate: new Date(2017, 8, 1),
+    description: dedent`Taught iGCSE and A level French at one of the UK's leading private schools.  
+    * Taught extension classes on French Literature and Philosophy.  
+    * Responsible for preparing MFL Oxbridge candidates for exams/interviews.  
+    * Supervised 'Waynflete Projects' (L6th Extended essays).  
+    * Supervised Outreach Literacy Scheme with Tyndale Primary School.`,
+  },
+  mst: {
+    title: 'MSt French Literature',
+    organisation: 'University of Oxford',
+    location: 'Oxford',
+    startDate: new Date(2015, 9, 1),
+    endDate: new Date(2016, 8, 1),
+    description: dedent`Grade: Distinction`,
+  },
+  ba: {
+    title: 'BA Modern Languages',
+    organisation: 'University of Oxford',
+    location: 'Oxford',
+    startDate: new Date(2011, 9, 1),
+    endDate: new Date(2015, 8, 1),
+    description: dedent`Grade: Congratulatory First Class Honours
+    * Highest overall mark in the university for French
+    * Distinction in Spoken French
+    * Awarded the RA Knox Prize for Outstanding Firsts`,
+  },
 }

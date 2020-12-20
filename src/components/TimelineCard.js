@@ -10,16 +10,16 @@ const TimelinCardWrapper = styled(Card)`
   position: absolute;
   width: 400px;
   height: initial;
-  top: ${props => props.top};
+  bottom: ${props => props.bottom};
   ${props => {
     switch (props.horizontalAlignment) {
       case 'left':
         return css`
-          left: 80px;
+          right: 130px;
         `
       case 'right':
         return css`
-          right: 80px;
+          left: 160px;
         `
       default:
         break
@@ -70,10 +70,7 @@ const TimelineCard = ({
   horizontalAlignment,
   verticalOffset,
 }) => (
-  <TimelinCardWrapper
-    horizontalAlignment={horizontalAlignment}
-    top={verticalOffset}
-  >
+  <TimelinCardWrapper horizontalAlignment={horizontalAlignment} bottom={verticalOffset}>
     <HeaderWrapper>
       <Title>
         <strong>{organisation}</strong>, {location} - {title}

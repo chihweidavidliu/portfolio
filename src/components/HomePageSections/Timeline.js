@@ -25,6 +25,7 @@ const PointWrapper = styled.div`
   position: relative;
   box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.1s ease-in;
+  position: relative;
   &:hover {
     transform: scale(1.1);
   }
@@ -61,17 +62,18 @@ const DateLineWrapper = styled.div`
 const LineSection = styled.div`
   position: relative;
   width: 4px;
-  height: ${props => props.height || '600px'};
+  height: ${props => props.height || '300px'};
   background: ${props => props.theme.accent1.bg};
   margin: 5px 0px;
   border-radius: 2px;
   box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
 `
 
-const Point = ({ date }) => (
+const Point = ({ date, children }) => (
   <PointWrapper>
     <InnerPoint />
     <DateLabel>{date}</DateLabel>
+    {children}
   </PointWrapper>
 )
 
@@ -89,6 +91,24 @@ const DateLine = ({ children }) => (
     <Point date="2018" />
     <LineSection />
     <Point date="2017" />
+    <LineSection />
+    <Point date="2016">
+      <TimelineCard horizontalAlignment="right" verticalOffset="0px" {...timelineContents.mcs} />
+    </Point>
+    <LineSection height="70px" />
+    <Point date="2015">
+      <TimelineCard horizontalAlignment="left" verticalOffset="-20px" {...timelineContents.mst} />
+    </Point>
+    <LineSection height="70px" />
+    <Point date="2014" />
+    <LineSection height="70px" />
+    <Point date="2013" />
+    <LineSection height="70px" />
+    <Point date="2012" />
+    <LineSection height="70px" />
+    <Point date="2011">
+      <TimelineCard horizontalAlignment="right" verticalOffset="70px" {...timelineContents.ba} />
+    </Point>
   </DateLineWrapper>
 )
 
@@ -99,24 +119,7 @@ DateLine.propTypes = {
 const Timeline = () => (
   <Section>
     <SectionHeader>Timeline</SectionHeader>
-
-    <DateLine>
-      <TimelineCard
-        horizontalAlignment="left"
-        verticalOffset="0px"
-        {...timelineContents.satoshi}
-      />
-      <TimelineCard
-        horizontalAlignment="right"
-        verticalOffset="bottom"
-        {...timelineContents.defty}
-      />
-      <TimelineCard
-        horizontalAlignment="left"
-        verticalOffset="top"
-        {...timelineContents.ens}
-      />
-    </DateLine>
+    <DateLine />
   </Section>
 )
 
