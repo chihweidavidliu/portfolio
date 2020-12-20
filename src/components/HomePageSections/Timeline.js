@@ -3,6 +3,15 @@ import styled from 'styled-components'
 import Proptypes from 'prop-types'
 import SectionHeader from '../typography/SectionHeader'
 import Section from '../Section'
+import TimelineCard from '../TimelineCard'
+import { timelineContents } from '../../timeline'
+
+const TimelineGrid = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+`
 
 const PointWrapper = styled.div`
   width: 30px;
@@ -46,24 +55,18 @@ const DateLineWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 `
 
-const LineSectionWrapper = styled.div`
+const LineSection = styled.div`
+  position: relative;
   width: 4px;
-  height: ${props => props.height || '200px'};
+  height: ${props => props.height || '600px'};
   background: ${props => props.theme.accent1.bg};
   margin: 5px 0px;
   border-radius: 2px;
   box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
 `
-
-const LineSection = ({ height }) => (
-  <LineSectionWrapper height={height}></LineSectionWrapper>
-)
-
-LineSection.propTypes = {
-  height: Proptypes.string,
-}
 
 const Point = ({ date }) => (
   <PointWrapper>
@@ -76,8 +79,9 @@ Point.propTypes = {
   date: Proptypes.string.isRequired,
 }
 
-const DateLine = () => (
+const DateLine = ({ children }) => (
   <DateLineWrapper>
+    {children}
     <Point date="2020" />
     <LineSection />
     <Point date="2019" />
@@ -88,10 +92,31 @@ const DateLine = () => (
   </DateLineWrapper>
 )
 
+DateLine.propTypes = {
+  children: Proptypes.any,
+}
+
 const Timeline = () => (
   <Section>
     <SectionHeader>Timeline</SectionHeader>
-    <DateLine />
+
+    <DateLine>
+      <TimelineCard
+        horizontalAlignment="left"
+        verticalOffset="0px"
+        {...timelineContents.satoshi}
+      />
+      <TimelineCard
+        horizontalAlignment="right"
+        verticalOffset="bottom"
+        {...timelineContents.defty}
+      />
+      <TimelineCard
+        horizontalAlignment="left"
+        verticalOffset="top"
+        {...timelineContents.ens}
+      />
+    </DateLine>
   </Section>
 )
 
