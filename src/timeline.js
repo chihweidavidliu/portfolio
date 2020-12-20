@@ -49,7 +49,7 @@ export const timelineContents = {
     title: 'Freelance Web Developer',
     organisation: '',
     location: 'Lyon',
-    startDate: new Date(2018, 8, 1),
+    startDate: new Date(2018, 4, 1),
     endDate: new Date(2018, 11, 1),
     description: dedent`Worked on several freelance projects.
     
