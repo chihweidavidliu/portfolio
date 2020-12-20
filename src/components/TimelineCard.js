@@ -156,10 +156,12 @@ const TimelineCard = ({
     >
       <HeaderWrapper>
         <HeaderInfo>
-          <Title>{title}</Title>
-          <Organisation>
-            {organisation ? `${organisation}, ` : ''} {location}
-          </Organisation>
+          <div>
+            <Title>{title}</Title>
+            <Organisation>
+              {organisation ? `${organisation}, ` : ''} {location}
+            </Organisation>
+          </div>
           <Date>
             {format(startDate, 'MMMM yyyy')} - {format(endDate, 'MMMM yyyy')} (
             {renderDuration()})
