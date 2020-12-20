@@ -159,11 +159,13 @@ const TimelineCard = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Branch
-        horizontalAlignment={horizontalAlignment}
-        heights={branchHeights}
-        isHovered={isHovered}
-      />
+      {isDesktop && (
+        <Branch
+          horizontalAlignment={horizontalAlignment}
+          heights={branchHeights}
+          isHovered={isHovered}
+        />
+      )}
       <HeaderWrapper>
         <HeaderInfo>
           <div>

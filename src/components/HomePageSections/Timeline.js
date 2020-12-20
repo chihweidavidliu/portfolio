@@ -122,9 +122,15 @@ const Timeline = () => {
           </>
         ) : (
           <>
-            {Object.keys(timelineContents).map(field => {
+            {Object.keys(timelineContents).map((field, index) => {
               const props = timelineContents[field]
-              return <TimelineCard horizontalAlignment="right" {...props} />
+              return (
+                <TimelineCard
+                  key={index}
+                  horizontalAlignment="right"
+                  {...props}
+                />
+              )
             })}
           </>
         )}

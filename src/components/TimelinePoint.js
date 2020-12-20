@@ -40,6 +40,7 @@ const DateLabel = styled.div`
   margin: 0;
   position: absolute;
   left: 35px;
+  text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
 `
 
 const TimelinePoint = ({ date, children }) => (
