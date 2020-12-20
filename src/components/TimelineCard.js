@@ -29,7 +29,17 @@ const TimelinCardWrapper = styled(Card)`
 
 export const HeaderWrapper = styled.div`
   display: grid;
+  grid-template-columns: 1fr 40px;
   grid-gap: 5px;
+`
+
+const HeaderInfo = styled.div`
+  display: grid;
+  grid-gap: 5px;
+`
+
+const Logo = styled.img`
+  width: 40px;
 `
 
 export const Title = styled.h2`
@@ -73,19 +83,23 @@ const TimelineCard = ({
   description,
   horizontalAlignment,
   verticalOffset,
+  logoUrl,
 }) => (
   <TimelinCardWrapper
     horizontalAlignment={horizontalAlignment}
     bottom={verticalOffset}
   >
     <HeaderWrapper>
-      <Title>{title}</Title>
-      <Organisation>
-        {organisation ? `${organisation}, ` : ''} {location}
-      </Organisation>
-      <Date>
-        {format(startDate, 'MMMM yyyy')} - {format(endDate, 'MMMM yyyy')}
-      </Date>
+      <HeaderInfo>
+        <Title>{title}</Title>
+        <Organisation>
+          {organisation ? `${organisation}, ` : ''} {location}
+        </Organisation>
+        <Date>
+          {format(startDate, 'MMMM yyyy')} - {format(endDate, 'MMMM yyyy')}
+        </Date>
+      </HeaderInfo>
+      {logoUrl && <Logo src={logoUrl} alt={`${organisation}-logo`} />}
     </HeaderWrapper>
 
     <Description>
@@ -103,6 +117,7 @@ TimelineCard.propTypes = {
   startDate: Proptypes.instanceOf(Date),
   endDate: Proptypes.instanceOf(Date),
   description: Proptypes.string.isRequired,
+  logoUrl: Proptypes.string,
 }
 
 export default TimelineCard

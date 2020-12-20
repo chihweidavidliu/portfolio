@@ -3,6 +3,8 @@ import dedent from 'dedent'
 export const timelineContents = {
   satoshi: {
     title: 'Full Stack Engineer',
+    logoUrl:
+      'https://media-exp1.licdn.com/dms/image/C4D0BAQF4cfzHGE73Aw/company-logo_100_100/0/1551103827538?e=1616630400&v=beta&t=WMOX1cJlRHfMRiNMmoS__dMJCtxWza1Mn-jl_MSGTUY',
     organisation: 'Satoshi Systems Ltd',
     location: 'London',
     startDate: new Date(2020, 5, 1),
@@ -18,6 +20,8 @@ export const timelineContents = {
   },
   defty: {
     title: 'Full Stack Engineer',
+    logoUrl:
+      'https://media-exp1.licdn.com/dms/image/C4D0BAQEk7-xydwYw0Q/company-logo_100_100/0/1542731176683?e=1616630400&v=beta&t=q2g2ApktzztynQrk5Etl57cAT5ov7N948IBFxujmncM',
     organisation: 'Defty',
     location: 'London',
     startDate: new Date(2019, 6, 1),
@@ -63,6 +67,8 @@ export const timelineContents = {
   },
   ens: {
     title: 'English Lecturer',
+    logoUrl:
+      'https://media-exp1.licdn.com/dms/image/C560BAQERXPYjiI_hIg/company-logo_100_100/0/1519856616115?e=1616630400&v=beta&t=5i9jjY6IUw07RWm-orVIELoJneESCWA8TgI0EhR1zuc',
     organisation: 'École Normale Supérieure',
     location: 'Lyon',
     startDate: new Date(2017, 9, 1),
@@ -72,6 +78,8 @@ export const timelineContents = {
   },
   mcs: {
     title: 'French Teacher',
+    logoUrl:
+      'https://media-exp1.licdn.com/dms/image/C560BAQFTeiul3SlxUg/company-logo_100_100/0/1519862853702?e=1616630400&v=beta&t=mh9Dwc7WNe18Dt17VDfe3p7PAyG71xKtFuN236pQy8U',
     organisation: 'Magdalen College School',
     location: 'Oxford',
     startDate: new Date(2016, 8, 1),
@@ -84,6 +92,8 @@ export const timelineContents = {
   },
   mst: {
     title: 'MSt French Literature',
+    logoUrl:
+      'https://media-exp1.licdn.com/dms/image/C560BAQGwPZs3spXFqw/company-logo_100_100/0/1539693367639?e=1616630400&v=beta&t=8HMG1n0FvGGdKT7RKpYfFpajGejymJ87TDpmvAhg2q4',
     organisation: 'University of Oxford',
     location: 'Oxford',
     startDate: new Date(2015, 8, 1),
@@ -92,6 +102,8 @@ export const timelineContents = {
   },
   ba: {
     title: 'BA Modern Languages',
+    logoUrl:
+      'https://media-exp1.licdn.com/dms/image/C560BAQGwPZs3spXFqw/company-logo_100_100/0/1539693367639?e=1616630400&v=beta&t=8HMG1n0FvGGdKT7RKpYfFpajGejymJ87TDpmvAhg2q4',
     organisation: 'University of Oxford',
     location: 'Oxford',
     startDate: new Date(2011, 8, 1),
