@@ -40,7 +40,7 @@ export const timelineContents = {
     organisation: 'BearJs',
     location: 'Remote',
     startDate: new Date(2019, 0, 1),
-    endDate: new Date(2019, 5, 1),
+    endDate: new Date(2019, 6, 31),
     description: dedent`Developed a frontend UI for interacting with spreadsheets in Bridging Software for HMRC’s Making Tax Digital API
 
     *Key technologies used: React, Nextjs, Nodejs, GraphQl*`,
@@ -72,7 +72,7 @@ export const timelineContents = {
     organisation: 'École Normale Supérieure',
     location: 'Lyon',
     startDate: new Date(2017, 8, 1),
-    endDate: new Date(2019, 5, 1),
+    endDate: new Date(2019, 6, 31),
     description: dedent`Lectured undergraduate and postgraduate students in English language and culture.
     `,
   },
