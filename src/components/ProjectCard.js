@@ -12,16 +12,15 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-rows: min-content 1fr;
   grid-gap: 20px;
-
   opacity: 0;
   transform: translateY(50%);
-  transition: opacity 400ms ease-in, transform 400ms ease-in;
 
   ${props =>
     props.inView &&
     css`
       opacity: 1;
       transform: translateY(0);
+      transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
     `}
 `
 

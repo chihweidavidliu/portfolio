@@ -9,13 +9,10 @@ const SkillCardWrapper = styled.div`
   background-color: white;
   border-radius: 10px;
   border: 1px solid lightgray;
-
   padding: 25px;
   box-shadow: 9px 10px 59px -19px rgba(0, 0, 0, 0.21);
-
   opacity: 0;
   transform: translateY(50%);
-  transition: opacity 400ms ease-in, transform 400ms ease-in;
 
   ${props =>
     props.inView &&
