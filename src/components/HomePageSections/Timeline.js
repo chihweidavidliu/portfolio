@@ -43,6 +43,15 @@ const Timeline = () => {
       <TimelineWrapper>
         {isDesktop ? (
           <>
+            <TimelinePoint date="Present">
+              <TimelineCard
+                horizontalAlignment="right"
+                verticalOffset="-180px"
+                branchHeights={{ top: 77, bottom: 69 }}
+                {...timelineContents.sourceful}
+              />
+            </TimelinePoint>
+            <LineSection height="200px" />
             <TimelinePoint date="2021"></TimelinePoint>
             <LineSection />
             <TimelinePoint date="2020">

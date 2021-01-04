@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 
   opacity: 0;
   transform: translateY(50%);
-  transition: opacity 300ms ease-in, transform 400ms ease-in;
+  transition: opacity 400ms ease-in, transform 400ms ease-in;
 
   ${props =>
     props.inView &&

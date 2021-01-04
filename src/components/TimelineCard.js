@@ -122,6 +122,7 @@ const TimelineCard = ({
   branchHeights,
 }) => {
   const [isHovered, setIsHovered] = useState(false)
+  const isPresentJob = differenceInCalendarDays(endDate, startDate) === 0
   const isDesktop = useMediaQuery({
     query: '(min-width: 1120px)',
   })
@@ -147,7 +148,7 @@ const TimelineCard = ({
       duration += ` ${years > 0 ? remainingMonths : months} months`
     }
 
-    return duration.trim()
+    return duration ? ` (${duration.trim()})` : ''
   }
 
   return (
@@ -175,8 +176,9 @@ const TimelineCard = ({
             </Organisation>
           </div>
           <Date>
-            {format(startDate, 'MMMM yyyy')} - {format(endDate, 'MMMM yyyy')} (
-            {renderDuration()})
+            {format(startDate, 'MMMM yyyy')} -{' '}
+            {isPresentJob ? 'Present' : format(endDate, 'MMMM yyyy')}
+            {renderDuration()}
           </Date>
         </HeaderInfo>
         {logoUrl && <Logo src={logoUrl} alt={`${organisation}-logo`} />}

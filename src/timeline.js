@@ -1,6 +1,16 @@
 import dedent from 'dedent'
 
 export const timelineContents = {
+  sourceful: {
+    title: 'Software Engineer',
+    logoUrl:
+      'https://media-exp1.licdn.com/dms/image/C4D0BAQHTYxW855nAsw/company-logo_100_100/0/1607549013969?e=1617840000&v=beta&t=GBvzJpz8qqOBbJ_YPrUHbfWUBf57tjp__T4RsLEUqNA',
+    organisation: 'Sourceful',
+    location: 'London',
+    startDate: new Date(2021, 0, 4),
+    endDate: new Date(),
+    description: dedent``,
+  },
   satoshi: {
     title: 'Full Stack Engineer',
     logoUrl:
