@@ -95,12 +95,12 @@ const Timeline = () => {
                 {...timelineContents.ens}
               />
             </TimelinePoint>
-            <LineSection />
+            <LineSection height="70px" />
             <TimelinePoint date="2016">
               <TimelineCard
                 horizontalAlignment="right"
-                verticalOffset="345px"
-                branchHeights={{ top: 140, bottom: 140 }}
+                verticalOffset="115px"
+                branchHeights={{ top: 80, bottom: 128 }}
                 {...timelineContents.mcs}
               />
             </TimelinePoint>
@@ -108,8 +108,8 @@ const Timeline = () => {
             <TimelinePoint date="2015">
               <TimelineCard
                 horizontalAlignment="left"
-                verticalOffset="140px"
-                branchHeights={{ top: 124, bottom: 87 }}
+                verticalOffset="80px"
+                branchHeights={{ top: 34, bottom: 49 }}
                 {...timelineContents.mst}
               />
             </TimelinePoint>
