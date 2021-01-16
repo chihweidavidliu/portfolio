@@ -46,8 +46,8 @@ const Timeline = () => {
             <TimelinePoint date="Present">
               <TimelineCard
                 horizontalAlignment="right"
-                verticalOffset="-180px"
-                branchHeights={{ top: 77, bottom: 69 }}
+                verticalOffset="-170px"
+                branchHeights={{ top: 70, bottom: 75 }}
                 {...timelineContents.sourceful}
               />
             </TimelinePoint>
@@ -57,8 +57,8 @@ const Timeline = () => {
             <TimelinePoint date="2020">
               <TimelineCard
                 horizontalAlignment="left"
-                verticalOffset="93px"
-                branchHeights={{ top: 100, bottom: 50 }}
+                verticalOffset="134px"
+                branchHeights={{ top: 74, bottom: 76 }}
                 {...timelineContents.satoshi}
               />
             </TimelinePoint>
@@ -99,8 +99,8 @@ const Timeline = () => {
             <TimelinePoint date="2016">
               <TimelineCard
                 horizontalAlignment="right"
-                verticalOffset="115px"
-                branchHeights={{ top: 80, bottom: 128 }}
+                verticalOffset="75px"
+                branchHeights={{ top: 103, bottom: 103 }}
                 {...timelineContents.mcs}
               />
             </TimelinePoint>
@@ -108,8 +108,8 @@ const Timeline = () => {
             <TimelinePoint date="2015">
               <TimelineCard
                 horizontalAlignment="left"
-                verticalOffset="80px"
-                branchHeights={{ top: 34, bottom: 49 }}
+                verticalOffset="70px"
+                branchHeights={{ top: 40, bottom: 43 }}
                 {...timelineContents.mst}
               />
             </TimelinePoint>
