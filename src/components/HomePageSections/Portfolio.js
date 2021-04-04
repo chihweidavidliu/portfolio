@@ -9,14 +9,18 @@ import Section from '../Section'
 import { snakeProject } from '../../projects/snake'
 import { meteorsProject } from '../../projects/meteors'
 import { decisionMakerProject } from '../../projects/decisionMaker'
+import { notemateProject } from '../../projects/notemate'
+import { speakifyProject } from '../../projects/speakify'
 
 const PROJECTS = [
+  notemateProject,
   decisionMakerProject,
   meteorsProject,
   lingualinkProject,
   taskMasterProject,
   myInternshipProject,
   snakeProject,
+  speakifyProject,
 ]
 
 const Portfolio = () => (
