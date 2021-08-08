@@ -19,7 +19,7 @@ const SkillCardWrapper = styled.div`
     css`
       opacity: 1;
       transform: translateY(0);
-      transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+      transition: all ease-in 400ms;
       &:hover {
         transform: scale(1.03);
         border: 1px solid ${props => props.theme.accent1.bg};
