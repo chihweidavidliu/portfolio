@@ -13,14 +13,14 @@ const StyledImg = styled.img`
   left: ${props => props.left || 0};
   width: ${props => props.width || 0};
   z-index: 0;
-
+  transform: scale(0.9);
   opacity: 0;
   transition: all 400ms ease-in;
   ${props =>
     props.inView &&
     css`
       opacity: 1;
-      /* transform: translateY(0); */
+      transform: scale(1);
     `}
 `
 
@@ -31,8 +31,7 @@ const BackgroundImage = ({ src, alt, top, left, width }) => {
 
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: isDesktop ? 0.7 : 0,
-    rootMargin: `0px 0px ${isDesktop ? 0 : 100}px 0px`,
+    threshold: isDesktop ? 0.3 : 0,
   })
 
   return (

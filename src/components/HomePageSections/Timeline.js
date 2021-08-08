@@ -101,7 +101,7 @@ const Timeline = () => {
               <BackgroundImage
                 horizontalAlignment="left"
                 top="-370px"
-                left="-50vw"
+                left="-53vw"
                 src={lyon}
                 alt="Lyon"
                 width="45vw"
@@ -117,8 +117,8 @@ const Timeline = () => {
             <TimelinePoint date="2017">
               <TimelineCard
                 horizontalAlignment="left"
-                verticalOffset="330px"
-                branchHeights={{ top: 364, bottom: 210 }}
+                verticalOffset="460px"
+                branchHeights={{ top: 409, bottom: 160 }}
                 {...timelineContents.ens}
               />
             </TimelinePoint>
