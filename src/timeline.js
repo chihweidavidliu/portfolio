@@ -1,18 +1,37 @@
 import dedent from 'dedent'
 
 export const timelineContents = {
+  sourcefulTeamLead: {
+    title: 'Team Lead of Engineering',
+    logoUrl:
+      'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309220/portfolio/logos/sourceful_dxoy5h.jpg',
+    organisation: 'Sourceful',
+    location: 'London',
+    startDate: new Date(2021, 5, 1),
+    endDate: new Date(),
+    description: dedent``,
+  },
   sourceful: {
     title: 'Software Engineer',
-    logoUrl: 'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309220/portfolio/logos/sourceful_dxoy5h.jpg',
+    logoUrl:
+      'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309220/portfolio/logos/sourceful_dxoy5h.jpg',
     organisation: 'Sourceful',
     location: 'London',
     startDate: new Date(2021, 0, 4),
     endDate: new Date(),
-    description: dedent``,
+    description: dedent`Helping businesses to do better - environmentally, socially and economically. 
+  
+    * Frontend Development with React/Typescript/Apollo
+    * Designing and deploying microservices with Google Cloud / Kubernetes
+    * Implementing CI/CD workflows with Github Actions
+    * Facilitating Content Managment with Sanity CMS
+    
+    *Key technologies used: React, Typescript, Apollo, Hasura, Sanity CMS, Nodejs, Docker, Google Cloud, Kubernetes*`,
   },
   satoshi: {
     title: 'Full Stack Engineer',
-    logoUrl: 'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309220/portfolio/logos/satoshi_kzbwdm.png',
+    logoUrl:
+      'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309220/portfolio/logos/satoshi_kzbwdm.png',
     organisation: 'Satoshi Systems Ltd',
     location: 'London',
     startDate: new Date(2020, 5, 1),
@@ -28,7 +47,8 @@ export const timelineContents = {
   },
   defty: {
     title: 'Full Stack Engineer',
-    logoUrl: 'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309220/portfolio/logos/defty_anlttj.png',
+    logoUrl:
+      'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309220/portfolio/logos/defty_anlttj.png',
     organisation: 'Defty',
     location: 'London',
     startDate: new Date(2019, 6, 1),
@@ -74,7 +94,8 @@ export const timelineContents = {
   },
   ens: {
     title: 'English Lecturer',
-    logoUrl: 'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309220/portfolio/logos/ens_vbk3pc.png',
+    logoUrl:
+      'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309220/portfolio/logos/ens_vbk3pc.png',
     organisation: 'École Normale Supérieure',
     location: 'Lyon',
     startDate: new Date(2017, 8, 1),
@@ -84,7 +105,8 @@ export const timelineContents = {
   },
   mcs: {
     title: 'French Teacher',
-    logoUrl: 'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309320/portfolio/logos/mcs_r85lgb.png',
+    logoUrl:
+      'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309320/portfolio/logos/mcs_r85lgb.png',
     organisation: 'Magdalen College School',
     location: 'Oxford',
     startDate: new Date(2016, 8, 1),
@@ -97,7 +119,8 @@ export const timelineContents = {
   },
   mst: {
     title: 'MSt French Literature',
-    logoUrl: 'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309220/portfolio/logos/oxford_wveieo.png',
+    logoUrl:
+      'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309220/portfolio/logos/oxford_wveieo.png',
     organisation: 'University of Oxford',
     location: 'Oxford',
     startDate: new Date(2015, 8, 1),
@@ -106,7 +129,8 @@ export const timelineContents = {
   },
   ba: {
     title: 'BA Modern Languages',
-    logoUrl: 'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309220/portfolio/logos/oxford_wveieo.png',
+    logoUrl:
+      'https://res.cloudinary.com/dhccfu1un/image/upload/v1617309220/portfolio/logos/oxford_wveieo.png',
     organisation: 'University of Oxford',
     location: 'Oxford',
     startDate: new Date(2011, 8, 1),

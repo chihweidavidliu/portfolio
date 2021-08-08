@@ -6,6 +6,10 @@ import Section from '../Section'
 import TimelineCard from '../TimelineCard'
 import { timelineContents } from '../../timeline'
 import TimelinePoint from '../TimelinePoint'
+import BackgroundImage from '../BackgroundImage'
+import oxford from '../../assets/oxford-no-sky.jpg'
+import lyon from '../../assets/lyon.jpg'
+import london from '../../assets/london.jpg'
 
 const TimelineWrapper = styled.div`
   width: 100%;
@@ -44,21 +48,36 @@ const Timeline = () => {
         {isDesktop ? (
           <>
             <TimelinePoint date="Present">
+              <BackgroundImage
+                horizontalAlignment="left"
+                top="20px"
+                left="-50vw"
+                src={london}
+                alt="London"
+                width="41vw"
+              />
+              <TimelineCard
+                horizontalAlignment="left"
+                verticalOffset="-130px"
+                branchHeights={{ top: 40, bottom: 50 }}
+                {...timelineContents.sourcefulTeamLead}
+              />
+
               <TimelineCard
                 horizontalAlignment="right"
-                verticalOffset="-170px"
-                branchHeights={{ top: 70, bottom: 75 }}
+                verticalOffset="-500px"
+                branchHeights={{ top: 88, bottom: 84 }}
                 {...timelineContents.sourceful}
               />
             </TimelinePoint>
-            <LineSection height="200px" />
+            <LineSection height="400px" />
             <TimelinePoint date="2021"></TimelinePoint>
             <LineSection />
             <TimelinePoint date="2020">
               <TimelineCard
                 horizontalAlignment="left"
-                verticalOffset="134px"
-                branchHeights={{ top: 74, bottom: 76 }}
+                verticalOffset="104px"
+                branchHeights={{ top: 94, bottom: 56 }}
                 {...timelineContents.satoshi}
               />
             </TimelinePoint>
@@ -79,6 +98,14 @@ const Timeline = () => {
             </TimelinePoint>
             <LineSection />
             <TimelinePoint date="2018">
+              <BackgroundImage
+                horizontalAlignment="left"
+                top="-370px"
+                left="-50vw"
+                src={lyon}
+                alt="Lyon"
+                width="45vw"
+              />
               <TimelineCard
                 horizontalAlignment="right"
                 verticalOffset="25px"
@@ -90,7 +117,7 @@ const Timeline = () => {
             <TimelinePoint date="2017">
               <TimelineCard
                 horizontalAlignment="left"
-                verticalOffset="530px"
+                verticalOffset="330px"
                 branchHeights={{ top: 364, bottom: 210 }}
                 {...timelineContents.ens}
               />
@@ -106,6 +133,14 @@ const Timeline = () => {
             </TimelinePoint>
             <LineSection height="70px" />
             <TimelinePoint date="2015">
+              <BackgroundImage
+                horizontalAlignment="left"
+                top="20px"
+                left="-52vw"
+                src={oxford}
+                alt="Oxford"
+                width="50vw"
+              />
               <TimelineCard
                 horizontalAlignment="left"
                 verticalOffset="70px"

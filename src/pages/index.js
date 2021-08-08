@@ -13,6 +13,7 @@ import Timeline from '../components/HomePageSections/Timeline'
 const AppWrapper = styled.main`
   width: 100vw;
   max-width: 100vw;
+  overflow-x: hidden;
   display: grid;
   justify-items: center;
 `
